@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_gravity="center"
         android:layout_weight="1"
-        android:text="@string/new_contact" />
+        android:text="@string/new_beer" />
 
     <Button
         android:id="@+id/toolbar_done_button"

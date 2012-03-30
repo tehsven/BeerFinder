@@ -19,13 +19,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1.16"
-        android:text="@string/contacts" />
+        android:text="@string/beers" />
 
     <Button
         android:id="@+id/toolbar_new_contact_button"
         style="@style/ToolbarButton"
         android:layout_width="wrap_content"
         android:onClick="newContact"
-        android:text="@string/new_contact" />
+        android:text="@string/new_beer" />
 
 </LinearLayout>

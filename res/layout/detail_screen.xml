@@ -23,7 +23,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
                     android:gravity="center_horizontal"
-                    android:text="@string/contact_label_name"
+                    android:text="@string/beer_label_name"
                     android:textColor="@color/text_color_black"
                     android:textSize="24dp" />
 
@@ -41,7 +41,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
-                    android:text="@string/contact_label_title"
+                    android:text="@string/beer_label_title"
                     android:textColor="@color/text_color_black"
                     android:textSize="18dp" />
 
@@ -60,7 +60,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="4dp"
                     android:layout_marginTop="12dp"
-                    android:text="@string/contact_label_email"
+                    android:text="@string/beer_label_email"
                     android:textColor="@color/text_color_black"
                     android:textSize="18dp" />
 
@@ -79,7 +79,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="4dp"
                     android:layout_marginTop="12dp"
-                    android:text="@string/contact_label_phone"
+                    android:text="@string/beer_label_phone"
                     android:textColor="@color/text_color_black"
                     android:textSize="18dp" />
 
@@ -98,7 +98,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="4dp"
                     android:layout_marginTop="12dp"
-                    android:text="@string/contact_label_twitter"
+                    android:text="@string/beer_label_twitter"
                     android:textColor="@color/text_color_black"
                     android:textSize="18dp" />
 

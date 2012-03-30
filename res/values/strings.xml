@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">Beer Finder</string>
-    <string name="contacts">Contacts</string>
+    <string name="beers">Beers</string>
     <string name="about">About</string>
     
     <string name="title">Title</string>
@@ -13,15 +13,15 @@
     <string name="cancel">Cancel</string>
     <string name="done">Done</string>
     <string name="delete">Delete</string>
-    <string name="new_contact">New</string>
+    <string name="new_beer">New</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     
-    <string name="contact_label_name">Name</string>
-    <string name="contact_label_email">Email</string>
-    <string name="contact_label_title">Title</string>
-    <string name="contact_label_phone">Phone</string>
-    <string name="contact_label_twitter">Twitter</string>
+    <string name="beer_label_name">Name</string>
+    <string name="beer_label_email">Email</string>
+    <string name="beer_label_title">Title</string>
+    <string name="beer_label_phone">Phone</string>
+    <string name="beer_label_twitter">Twitter</string>
     <string name="toolbar_details">Details</string>
     
     <string name="contact_dynamicValue">&lt;&lt; text >></string>
@@ -33,7 +33,7 @@
     <string name="about_view_member3">Vladimir Beliaev</string>
     <string name="about_view_member4">Brian Stevenson</string>
     
-    <string name="delete_confirmation">Are you sure you want delete this contact?</string>
+    <string name="delete_confirmation">Are you sure you want delete this beer?</string>
     
     <string name="item_icon_description">Item Icon</string>
     <string name="logo_description">Logo</string>

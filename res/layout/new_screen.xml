@@ -21,7 +21,7 @@
                 android:id="@+id/textView_NameLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/contact_label_name"
+                android:text="@string/beer_label_name"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/text_color_black" />
 
@@ -30,7 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:hint="@string/contact_label_name"
+                android:hint="@string/beer_label_name"
                 android:inputType="text"
                 android:textSize="24dp" />
 
@@ -38,7 +38,7 @@
                 android:id="@+id/textView_TitleLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/contact_label_title"
+                android:text="@string/beer_label_title"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/text_color_black" />
 
@@ -47,7 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:hint="@string/contact_label_title"
+                android:hint="@string/beer_label_title"
                 android:inputType="text"
                 android:textSize="18dp" />
 
@@ -55,7 +55,7 @@
                 android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/contact_label_email"
+                android:text="@string/beer_label_email"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/text_color_black" />
 
@@ -64,7 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:hint="@string/contact_label_email"
+                android:hint="@string/beer_label_email"
                 android:inputType="textEmailAddress"
                 android:textSize="18dp" />
 
@@ -72,7 +72,7 @@
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/contact_label_phone"
+                android:text="@string/beer_label_phone"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/text_color_black" />
 
@@ -81,7 +81,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:hint="@string/contact_label_phone"
+                android:hint="@string/beer_label_phone"
                 android:inputType="phone"
                 android:textSize="18dp" />
 
@@ -89,7 +89,7 @@
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/contact_label_twitter"
+                android:text="@string/beer_label_twitter"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/text_color_black" />
 
@@ -98,7 +98,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:hint="@string/contact_label_twitter"
+                android:hint="@string/beer_label_twitter"
                 android:inputType="text"
                 android:textSize="18dp" />
         </LinearLayout>

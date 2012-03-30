@@ -11,7 +11,7 @@
         style="@style/ToolbarButton"
         android:layout_weight="0"
         android:onClick="contactsClicked"
-        android:text="@string/contacts" />
+        android:text="@string/beers" />
 
     <TextView
         android:id="@+id/toolbar_title"
