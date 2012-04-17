@@ -16,16 +16,16 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 /**
- * Displays a list of contacts.
+ * Displays a list of brands to select.
  */
-public class ContactListActivity extends ListActivity {
+public class SearchByBrandActivity extends ListActivity {
 
     private ContactAdapter contactAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_screen);
+        setContentView(R.layout.search_by_brand_screen);
         initListView();
     }
 
@@ -50,7 +50,7 @@ public class ContactListActivity extends ListActivity {
     private void initListView() {
         // create list
         if (contactAdapter == null) {
-            contactAdapter = new ContactAdapter(this, R.layout.list_item, ContactRepository.getInstance(this)
+            contactAdapter = new ContactAdapter(this, R.layout.search_by_brand_item, ContactRepository.getInstance(this)
                     .getSortedContactList());
             setListAdapter(contactAdapter);
         }
@@ -88,7 +88,7 @@ public class ContactListActivity extends ListActivity {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             LayoutInflater inflater = getLayoutInflater();
-            View item = inflater.inflate(R.layout.list_item, parent, false);
+            View item = inflater.inflate(R.layout.search_by_brand_item, parent, false);
 
             Contact contact = getItem(position);
             ((TextView) item.findViewById(R.id.item_name)).setText(contact.getName());

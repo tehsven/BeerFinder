@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/toolbar"
+    android:id="@+id/search_by_brand_toolbar"
     style="@style/Toolbar"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
@@ -11,7 +11,7 @@
         style="@style/ToolbarButton"
         android:layout_weight="0"
         android:onClick="backClicked"
-        android:text="@string/back" />
+        android:text="@string/home" />
 
     <TextView
         android:id="@+id/toolbar_title"
@@ -19,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1.16"
-        android:text="@string/beers" />
+        android:text="@string/search_by_brand_label" />
 
     <Button
         android:id="@+id/toolbar_new_contact_button"

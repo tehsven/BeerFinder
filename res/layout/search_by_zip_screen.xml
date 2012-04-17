@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/search_by_zip_screen"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/search_by_zip_toolbar" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/logo_description"
+        android:src="@drawable/logo" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/enter_zip_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:hint="@string/enter_zip_label"
+            android:inputType="number"
+            android:textSize="18dp" />
+
+        <Button
+            android:id="@+id/use_current_zip_button"
+            style="@style/MainButton"
+            android:text="@string/use_current_zip_label" />
+
+        <Button
+            android:id="@+id/search_by_zip_go_button"
+            style="@style/MainButton"
+            android:text="@string/search_by_zip_go_label" />
+    </LinearLayout>
+
+</LinearLayout>
