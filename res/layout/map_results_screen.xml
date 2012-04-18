@@ -5,9 +5,9 @@
     android:layout_height="wrap_content"
     android:orientation="vertical" >
 
-    <include layout="@layout/new_toolbar" />
+    <include layout="@layout/map_results_toolbar" />
 
-    <MapView
+    <com.google.android.maps.MapView
         android:id="@+id/map_results_map_view"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"

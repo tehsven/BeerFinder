@@ -7,14 +7,14 @@
     android:orientation="horizontal" >
 
     <Button
-        android:id="@+id/toolbar_back_button"
+        android:id="@+id/search_by_brand_home_button"
         style="@style/ToolbarButton"
         android:layout_weight="0"
-        android:onClick="backClicked"
+        android:onClick="homeClicked"
         android:text="@string/home" />
 
     <TextView
-        android:id="@+id/toolbar_title"
+        android:id="@+id/search_by_brand_title"
         style="@style/ToolbarTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

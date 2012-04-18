@@ -29,5 +29,6 @@
     <string name="search_by_zip_go_label">Go!</string>
     <string name="enter_zip_label">Enter Zip</string>
     <string name="list_results_label">List Results</string>
+    <string name="map_results_label">Map Results</string>
 
 </resources>

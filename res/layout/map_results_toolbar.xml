@@ -7,11 +7,11 @@
     android:orientation="horizontal" >
 
     <Button
-        android:id="@+id/toolbar_cancel_button"
+        android:id="@+id/map_results_toolbar_home_button"
         style="@style/ToolbarButton"
         android:layout_weight="0"
-        android:onClick="cancelClicked"
-        android:text="@string/cancel" />
+        android:onClick="homeClicked"
+        android:text="@string/home" />
 
     <TextView
         android:id="@+id/toolbar_title"
@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_gravity="center"
         android:layout_weight="1"
-        android:text="@string/new_beer" />
+        android:text="@string/map_results_label" />
 
     <Button
         android:id="@+id/toolbar_list_results_button"

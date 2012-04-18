@@ -4,19 +4,19 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
-    <uses-sdk android:minSdkVersion="10" />
+    <uses-sdk android:minSdkVersion="15" />
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
-        
         <uses-library android:name="com.google.android.maps" />
-        
+
         <activity
-            android:name=".HomeActivity"
+            android:name=".activities.SearchActivity"
             android:label="@string/app_name"
             android:theme="@style/MnTheme" >
             <intent-filter>
@@ -34,25 +34,10 @@
             android:name=".activities.SearchByBeerActivity"
             android:label="@string/search_by_brand_label"
             android:theme="@style/MnTheme" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
-            android:name=".activities.ContactDetailActivity"
-            android:label="@string/app_name"
-            android:theme="@style/MnTheme" >
-        </activity>
-        <activity
-            android:name=".activities.ContactEditActivity"
-            android:label="@string/app_name"
-            android:theme="@style/MnTheme" >
-        </activity>
-        <activity
-            android:name=".activities.ContactNewActivity"
-            android:label="@string/app_name"
+            android:name=".activities.MapResultsActivity"
+            android:label="@string/map_results_label"
             android:theme="@style/MnTheme" >
         </activity>
     </application>

@@ -16,7 +16,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 import edu.umn.pinkpanthers.beerfinder.R;
-import edu.umn.pinkpanthers.beerfinder.data.Beer;
 
 /**
  * Displays a list of brands to select.
@@ -29,7 +28,7 @@ public class SearchByZipActivity extends Activity implements OnClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.search_screen);
+        setContentView(R.layout.search_by_zip_screen);
         enterZipInput = (EditText) findViewById(R.id.enter_zip_button);
         findViewById(R.id.use_current_zip_button).setOnClickListener(this);
         findViewById(R.id.search_by_zip_go_button).setOnClickListener(this);
@@ -42,13 +41,13 @@ public class SearchByZipActivity extends Activity implements OnClickListener {
             startMapResultsActivity(enterZipInput.getText().toString());
         }
     }
-    
+
     private void getCurrentZip() {
         // Show a spinner while the zip code is retrieved
-        final ProgressDialog spinner = ProgressDialog.show(this, "Working..", "Getting current zip...", true, false);
+        final ProgressDialog spinner = ProgressDialog.show(this, "Working...", "Getting current zip...", true, false);
 
         // Acquire a reference to the system Location Manager
-        final LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        final LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
         // Define a listener that responds to location updates
         LocationListener locationListener = new LocationListener() {
@@ -63,7 +62,14 @@ public class SearchByZipActivity extends Activity implements OnClickListener {
                         enterZipInput.setText(zipCode);
                     }
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    // There is a bug in the 2.3.3 emulator that always throws a
+                    // "Service not Available" exception, documented here:
+                    // http://code.google.com/p/android/issues/detail?id=8816
+                    if (e.getMessage().contains("Service not Available")) {
+                        enterZipInput.setText("55455");
+                    } else {
+                        e.printStackTrace();
+                    }
                 } finally {
                     locationManager.removeUpdates(this);
                     spinner.dismiss();
@@ -80,12 +86,12 @@ public class SearchByZipActivity extends Activity implements OnClickListener {
             }
         };
 
-        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
     }
-    
+
     private void startMapResultsActivity(String zip) {
-         Intent mapResultsIntent = new Intent(getApplicationContext(), MapResultsActivity.class);
-         mapResultsIntent.putExtra(SearchByZipActivity.SELECTED_ZIP, zip);
-         startActivity(mapResultsIntent);
+        Intent mapResultsIntent = new Intent(getApplicationContext(), MapResultsActivity.class);
+        mapResultsIntent.putExtra(SearchByZipActivity.SELECTED_ZIP, zip);
+        startActivity(mapResultsIntent);
     }
 }

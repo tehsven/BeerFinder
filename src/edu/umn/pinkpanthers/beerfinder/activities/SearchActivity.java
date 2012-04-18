@@ -1,13 +1,11 @@
 package edu.umn.pinkpanthers.beerfinder.activities;
 
-import edu.umn.pinkpanthers.beerfinder.R;
-import edu.umn.pinkpanthers.beerfinder.R.id;
-import edu.umn.pinkpanthers.beerfinder.R.layout;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import edu.umn.pinkpanthers.beerfinder.R;
 
 /**
  * The home screen of the application.
