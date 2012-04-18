@@ -32,5 +32,7 @@
     <string name="map_results_label">Map Results</string>
     <string name="venue_label">Venue</string>
     <string name="todo">TODO</string>
+    <string name="working_spinner">Working...</string>
+    <string name="getting_current_zip">Getting current zip...</string>
 
 </resources>

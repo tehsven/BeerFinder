@@ -37,13 +37,9 @@ public class SearchByBeerActivity extends ListActivity {
         beerAdapter.notifyDataSetChanged();
     }
 
-    public void homeClicked(View view) {
-        finish();
-    }
-
     private void initListView() {
         if (beerAdapter == null) {
-             beerAdapter = new BeerAdapter(this, R.layout.search_by_brand_item, getSearchableBeerList());
+            beerAdapter = new BeerAdapter(this, R.layout.search_by_brand_item, getSearchableBeerList());
             setListAdapter(beerAdapter);
         }
         ListView lv = getListView();
@@ -56,11 +52,11 @@ public class SearchByBeerActivity extends ListActivity {
 
         });
     }
-    
+
     private List<Beer> getSearchableBeerList() {
         // TODO define the APIs for getting a sorted list of beers
         // ContactRepository.getInstance(this).getSortedContactList());
-        return Collections.<Beer>emptyList();
+        return Collections.<Beer> emptyList();
     }
 
     public class BeerAdapter extends ArrayAdapter<Beer> {
@@ -86,11 +82,15 @@ public class SearchByBeerActivity extends ListActivity {
             return item;
         }
     }
-    
+
+    public void homeClicked(View view) {
+        finish();
+    }
+
     private void startMapResultsActivity(Beer selectedBeer) {
         Intent mapResultsIntent = new Intent(getApplicationContext(), MapResultsActivity.class);
         mapResultsIntent.putExtra(Beer.SELECTED_BEER, selectedBeer);
         startActivity(mapResultsIntent);
-   }
+    }
 
 }

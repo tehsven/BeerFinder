@@ -45,7 +45,8 @@ public class SearchByZipActivity extends Activity implements OnClickListener {
 
     private void getCurrentZip() {
         // Show a spinner while the zip code is retrieved
-        final ProgressDialog spinner = ProgressDialog.show(this, "Working...", "Getting current zip...", true, false);
+        final ProgressDialog spinner = ProgressDialog.show(this, getString(R.string.working_spinner),
+                getString(R.string.getting_current_zip), true, false);
 
         // Acquire a reference to the system Location Manager
         final LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -97,9 +98,12 @@ public class SearchByZipActivity extends Activity implements OnClickListener {
             public void run() {
                 locationManager.removeUpdates(locationListener);
                 spinner.dismiss();
-                enterZipInput.setText("55455");
             }
         }, 10000);
+    }
+
+    public void homeClicked(View view) {
+        finish();
     }
 
     private void startMapResultsActivity(String zip) {
