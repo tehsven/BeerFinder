@@ -38,6 +38,18 @@
         <activity
             android:name=".activities.MapResultsActivity"
             android:label="@string/map_results_label"
+            android:noHistory="true"
+            android:theme="@style/MnTheme" >
+        </activity>
+        <activity
+            android:name=".activities.ListResultsActivity"
+            android:label="@string/list_results_label"
+            android:noHistory="true"
+            android:theme="@style/MnTheme" >
+        </activity>
+        <activity
+            android:name=".activities.VenueActivity"
+            android:label="@string/venue_label"
             android:theme="@style/MnTheme" >
         </activity>
     </application>

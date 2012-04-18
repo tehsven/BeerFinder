@@ -12,6 +12,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
@@ -50,7 +51,7 @@ public class SearchByZipActivity extends Activity implements OnClickListener {
         final LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
         // Define a listener that responds to location updates
-        LocationListener locationListener = new LocationListener() {
+        final LocationListener locationListener = new LocationListener() {
             public void onLocationChanged(Location location) {
                 List<Address> addresses = null;
                 try {
@@ -86,7 +87,19 @@ public class SearchByZipActivity extends Activity implements OnClickListener {
             }
         };
 
+        // Request updates
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+
+        // Wait 10 seconds before bailing
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                locationManager.removeUpdates(locationListener);
+                spinner.dismiss();
+                enterZipInput.setText("55455");
+            }
+        }, 10000);
     }
 
     private void startMapResultsActivity(String zip) {

@@ -1,5 +1,6 @@
 package edu.umn.pinkpanthers.beerfinder.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import com.google.android.maps.GeoPoint;
@@ -33,7 +34,8 @@ public class MapResultsActivity extends MapActivity {
     }
 
     public void listResultsClicked(View view) {
-        // TODO
+        Intent listResultsIntent = new Intent(this, ListResultsActivity.class);
+        startActivity(listResultsIntent);
         finish();
     }
 

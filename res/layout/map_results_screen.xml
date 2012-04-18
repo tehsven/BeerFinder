@@ -11,6 +11,6 @@
         android:id="@+id/map_results_map_view"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:apiKey="0k1Ue9Lsf3sju5Tygu00tnSGrrq111yejOjREew" />
+        android:apiKey="0k1Ue9Lsf3shsKzPzHoxQjbqsZhuOu2ClxlA9uQ" />
 
 </LinearLayout>

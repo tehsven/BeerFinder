@@ -71,4 +71,20 @@ public class Venue implements Parcelable, Comparable<Venue> {
         return 0;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public String getLocation() {
+        return location.toString();
+    }
+
 }

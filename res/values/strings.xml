@@ -30,5 +30,7 @@
     <string name="enter_zip_label">Enter Zip</string>
     <string name="list_results_label">List Results</string>
     <string name="map_results_label">Map Results</string>
+    <string name="venue_label">Venue</string>
+    <string name="todo">TODO</string>
 
 </resources>
