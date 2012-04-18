@@ -5,10 +5,8 @@
     <string name="home">Home</string>
     <string name="search_by_brand_label">Search By Brand</string>
     <string name="search_by_zip_label">Search By Zip</string>
-    
     <string name="title">Title</string>
     <string name="phone">Phone</string>
-    
     <string name="back">Back</string>
     <string name="edit">Edit</string>
     <string name="cancel">Cancel</string>
@@ -17,24 +15,19 @@
     <string name="new_beer">New</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
-    
     <string name="beer_label_name">Name</string>
     <string name="beer_label_email">Email</string>
     <string name="beer_label_title">Title</string>
     <string name="beer_label_phone">Phone</string>
     <string name="beer_label_twitter">Twitter</string>
     <string name="toolbar_details">Details</string>
-    
     <string name="contact_dynamicValue">&lt;&lt; text >></string>
-    
     <string name="delete_confirmation">Are you sure you want delete this beer?</string>
-    
     <string name="item_icon_description">Item Icon</string>
     <string name="logo_description">Logo</string>
-    
     <string name="use_current_zip_label">Use Current Zip</string>
     <string name="search_by_zip_go_label">Go!</string>
     <string name="enter_zip_label">Enter Zip</string>
-    
-    
+    <string name="list_results_label">List Results</string>
+
 </resources>

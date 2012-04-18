@@ -1,5 +1,8 @@
-package edu.umn.pinkpanthers.beerfinder;
+package edu.umn.pinkpanthers.beerfinder.activities;
 
+import edu.umn.pinkpanthers.beerfinder.R;
+import edu.umn.pinkpanthers.beerfinder.R.id;
+import edu.umn.pinkpanthers.beerfinder.R.layout;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,7 +25,7 @@ public class SearchActivity extends Activity implements OnClickListener {
 
     public void onClick(View v) {
         if (v.getId() == R.id.search_by_brand_button) {
-            Intent searchByBrandIntent = new Intent(this, SearchByBrandActivity.class);
+            Intent searchByBrandIntent = new Intent(this, SearchByBeerActivity.class);
             startActivity(searchByBrandIntent);
         }
         else if (v.getId() == R.id.search_by_zip_button) {
