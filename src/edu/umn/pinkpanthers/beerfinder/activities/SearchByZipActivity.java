@@ -98,6 +98,7 @@ public class SearchByZipActivity extends Activity implements OnClickListener {
             public void run() {
                 locationManager.removeUpdates(locationListener);
                 spinner.dismiss();
+                enterZipInput.setText("55455");
             }
         }, 10000);
     }

@@ -2,15 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/map_results_screen"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="fill_parent"
     android:orientation="vertical" >
 
     <include layout="@layout/map_results_toolbar" />
 
     <com.google.android.maps.MapView
-        android:id="@+id/map_results_map_view"
+        android:id="@+id/map_results_view"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:apiKey="0k1Ue9Lsf3shsKzPzHoxQjbqsZhuOu2ClxlA9uQ" />
+        android:apiKey="0k1Ue9Lsf3shsKzPzHoxQjbqsZhuOu2ClxlA9uQ"
+        android:clickable="true" />
 
 </LinearLayout>

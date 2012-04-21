@@ -17,13 +17,13 @@ public class MapResultsActivity extends MapActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.map_results_screen);
-        mapView = (MapView) findViewById(R.id.map_results_map_view);
+        mapView = (MapView) findViewById(R.id.map_results_view);
         mapView.setBuiltInZoomControls(true);
-        mapView.setSatellite(true);
+        mapView.setSatellite(false);
 
-        long latitude = 83;
-        long longitude = 133;
-        GeoPoint p = new GeoPoint((int) (latitude * 1000000), (int) (longitude * 1000000));
+        long latitude = 44976092;
+        long longitude = -93232212;
+        GeoPoint p = new GeoPoint((int) (latitude), (int) (longitude));
         MapController mc = mapView.getController();
         mc.setCenter(p);
         mc.setZoom(14);
