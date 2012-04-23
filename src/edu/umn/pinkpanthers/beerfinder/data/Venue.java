@@ -35,9 +35,20 @@ public class Venue implements Parcelable, Comparable<Venue> {
         readFromParcel(in);
     }
 
-    public Venue() {
-        // TODO
-    }
+    public Venue(String venueId, 
+            String name, 
+            String address, 
+            String phoneNumber, 
+            Location location, 
+            List<String> beerIds) 
+{
+    this.venueId = venueId;
+    this.name = name;
+    this.address = address;
+    this.phoneNumber = phoneNumber;
+    this.location = location;
+    this.beerIds = beerIds;
+}
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {

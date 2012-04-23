@@ -1,6 +1,5 @@
 package edu.umn.pinkpanthers.beerfinder.activities;
 
-import java.util.Collections;
 import java.util.List;
 import android.app.ListActivity;
 import android.content.Context;
@@ -15,6 +14,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import edu.umn.pinkpanthers.beerfinder.R;
 import edu.umn.pinkpanthers.beerfinder.data.Beer;
+import edu.umn.pinkpanthers.beerfinder.network.BeerFinderWebService;
 
 /**
  * Displays a list of beers to select.
@@ -54,18 +54,21 @@ public class SearchByBeerActivity extends ListActivity {
     }
 
     private List<Beer> getSearchableBeerList() {
-        // TODO define the APIs for getting a sorted list of beers
-        // ContactRepository.getInstance(this).getSortedContactList());
-        return Collections.<Beer> emptyList();
+        List<Beer> searchableBeers = BeerFinderWebService.getInstance().getSearchableBeerList();
+        return searchableBeers;
     }
 
     public class BeerAdapter extends ArrayAdapter<Beer> {
+        
+        List<Beer> beers;
 
         public BeerAdapter(Context context, int textViewResourceId, List<Beer> beers) {
             super(context, textViewResourceId, beers);
+            this.beers = beers;
         }
-
+        
         public void setList(List<Beer> beerList) {
+            beers = beerList;
             clear();
             for (Beer beer : beerList) {
                 add(beer);

@@ -2,96 +2,76 @@ package edu.umn.pinkpanthers.beerfinder.network;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.UUID;
+import android.location.Location;
 import edu.umn.pinkpanthers.beerfinder.data.Beer;
-import android.app.Activity;
-import android.os.AsyncTask;
+import edu.umn.pinkpanthers.beerfinder.data.Venue;
 
-// TODO implement me
 public class BeerFinderWebService {
 
-    private static BeerFinderWebService _instance;
-//    private HashMap<String, Beer> beers;
-//    private HashMap<String, String> contactIdsMap = new HashMap<String, String>();
+    private final List<Beer> sortedBeerList = new ArrayList<Beer>();
+    private final List<Venue> sortedVenueList = new ArrayList<Venue>();
+    private static BeerFinderWebService instance;
 
     private BeerFinderWebService() {
-        // TODO
-//        if (contacts == null) {
-//            contacts = new HashMap<String, Beer>();
+        // TODO Implement some sort of "realistic" data
+        
+        // Generate some Beers
+        int numberOfBeers = 50;
+        for (int i = 0; i < numberOfBeers; i++) {
+            Beer beer = new Beer(UUID.randomUUID().toString(), 
+                    "Beer Name " + i, 
+                    "Brewery " + i, 
+                    "Hops Rank " + i,
+                    "Body Rank " + i, 
+                    "Color Rank " + i, 
+                    "Description " + i);
+            sortedBeerList.add(beer);
+        }
+        Collections.sort(sortedBeerList);
 
-            // Get contacts from remote persistent storage and load into memory
-//            Map<String, String> contactsJson = BeerFinderWebServiceWebService.readContacts();
-//            for (Entry<String, String> contactJson : contactsJson.entrySet()) {
-//                contacts.put(contactJson.getKey(), new Contact((String) contactJson.getValue()));
-//                contactIdsMap.put(contactJson.getKey(), contactJson.getKey());
-//            }
-//        }
+        // Generate some Venues
+        int numberOfVenues = 10;
+        List<Location> generatedLocations = LocationResolver.generateLocationsNear(
+                LocationResolver.getDefaultLocation(), numberOfVenues);
+        for (int i = 0; i < numberOfVenues; i++) {
+            List<String> beerIds = new ArrayList<String>();
+            for (int j = i*5; j < i*5+5; j++) {
+                beerIds.add(String.valueOf(i));
+            }
+            Venue venue = new Venue(UUID.randomUUID().toString(), 
+                    "Venue Name " + i, 
+                    "Address " + i, 
+                    "Phone Number " + i,
+                    generatedLocations.get(i),
+                    beerIds);
+            sortedVenueList.add(venue);
+        }
+        Collections.sort(sortedVenueList);
     }
-
+    
     public static void initialize() {
-        if (_instance == null) {
-            _instance = new BeerFinderWebService();
+        if (instance == null) {
+            instance = new BeerFinderWebService();
         }
     }
-
-    public static BeerFinderWebService getInstance(Activity activity) {
-        return _instance;
+    
+    public static BeerFinderWebService getInstance() {
+        if (instance == null) {
+            throw new RuntimeException("Cannot access uninitialized instance! Call initialize() first!");
+        }
+        return instance;
     }
 
-    public List<Beer> getSearchableBeers() {
-        // TODO
-//        List<Contact> sortedContacts = new ArrayList<Contact>(contacts.values());
-//        Collections.sort(sortedContacts);
-//        return sortedContacts;
-        return Collections.<Beer>emptyList();
+    public List<Beer> getSearchableBeerList() {
+        List<Beer> sortedBeerListCopy = new ArrayList<Beer>(sortedBeerList);
+        return sortedBeerListCopy;
     }
 
-//    public void removeContact(final Contact contact, final Callback<Void> callback) {
-//        new AsyncTask<Void, Void, Void>() {
-//            @Override
-//            protected Void doInBackground(Void... params) {
-//                // Remove contact from local memory
-//                contacts.remove(contact.getUUID());
-//
-//                // Remove contact from remote persistent storage
-//                BeerFinderWebServiceWebService.deleteContact(contactIdsMap.get(contact.getUUID()));
-//                return null;
-//            }
-//
-//            @Override
-//            protected void onPostExecute(Void result) {
-//                callback.onSuccess(result);
-//            }
-//        }.execute();
-//    }
-//
-//    public void putContact(final Contact contact, final Callback<Void> callback) {
-//        new AsyncTask<Void, Void, Void>() {
-//            @Override
-//            protected Void doInBackground(Void... params) {
-//                // Put contact in local memory
-//                contacts.put(contact.getUUID(), contact);
-//
-//                // Update contact in remote persistent storage
-//                if (contactIdsMap.containsKey(contact.getUUID())) {
-//                    BeerFinderWebServiceWebService.updateContact(contactIdsMap.get(contact.getUUID()), contact.toJSON());
-//                }
-//                // Create contact in remote persistent storage
-//                else {
-//                    String remoteContactId = BeerFinderWebServiceWebService.createContact(contact.toJSON());
-//                    contactIdsMap.put(contact.getUUID(), remoteContactId);
-//                }
-//                return null;
-//            }
-//
-//            @Override
-//            protected void onPostExecute(Void result) {
-//                callback.onSuccess(result);
-//            }
-//        }.execute();
-//    }
+    public List<Venue> getSearchableVenueList() {
+        List<Venue> sortedVenueListCopy = new ArrayList<Venue>(sortedVenueList);
+        return sortedVenueListCopy;
+    }
 
 }

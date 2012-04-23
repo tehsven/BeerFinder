@@ -1,6 +1,5 @@
 package edu.umn.pinkpanthers.beerfinder.activities;
 
-import java.util.Collections;
 import java.util.List;
 import android.app.ListActivity;
 import android.content.Context;
@@ -15,6 +14,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import edu.umn.pinkpanthers.beerfinder.R;
 import edu.umn.pinkpanthers.beerfinder.data.Venue;
+import edu.umn.pinkpanthers.beerfinder.network.BeerFinderWebService;
 
 /**
  * Displays a list of Venues to select.
@@ -54,9 +54,8 @@ public class ListResultsActivity extends ListActivity {
     }
 
     private List<Venue> getSearchableVenueList() {
-        // TODO define the APIs for getting a sorted list of Venues
-        // ContactRepository.getInstance(this).getSortedContactList());
-        return Collections.<Venue> emptyList();
+        List<Venue> searchableVenus = BeerFinderWebService.getInstance().getSearchableVenueList();
+        return searchableVenus;
     }
 
     public class VenueAdapter extends ArrayAdapter<Venue> {
@@ -95,6 +94,7 @@ public class ListResultsActivity extends ListActivity {
 
     private void startVenueActivity(Venue selectedVenue) {
         Intent venueIntent = new Intent(getApplicationContext(), VenueActivity.class);
+        venueIntent.putExtra(Venue.SELECTED_VENUE, selectedVenue);
         startActivity(venueIntent);
     }
 

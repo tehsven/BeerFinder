@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import edu.umn.pinkpanthers.beerfinder.R;
+import edu.umn.pinkpanthers.beerfinder.network.BeerFinderWebService;
 
 /**
  * The home screen of the application.
@@ -19,6 +20,7 @@ public class SearchActivity extends Activity implements OnClickListener {
         setContentView(R.layout.search_screen);
         findViewById(R.id.search_by_brand_button).setOnClickListener(this);
         findViewById(R.id.search_by_zip_button).setOnClickListener(this);
+        BeerFinderWebService.initialize();
     }
 
     public void onClick(View v) {

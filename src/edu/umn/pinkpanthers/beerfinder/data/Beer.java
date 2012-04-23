@@ -33,8 +33,21 @@ public class Beer implements Parcelable, Comparable<Beer> {
         readFromParcel(in);
     }
 
-    public Beer() {
-        // TODO
+    public Beer(String beerId, 
+                String name, 
+                String breweryName, 
+                String hopsRank, 
+                String bodyRank, 
+                String colorRank,
+                String description) 
+    {
+        this.beerId = beerId;
+        this.name = name;
+        this.breweryName = breweryName;
+        this.hopsRank = hopsRank;
+        this.bodyRank = bodyRank;
+        this.colorRank = colorRank;
+        this.description = description;
     }
 
     @Override

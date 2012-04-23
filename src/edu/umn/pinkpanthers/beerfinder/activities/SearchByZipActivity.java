@@ -4,19 +4,17 @@ import java.io.IOException;
 import java.util.List;
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 import edu.umn.pinkpanthers.beerfinder.R;
+import edu.umn.pinkpanthers.beerfinder.network.Callback;
+import edu.umn.pinkpanthers.beerfinder.network.LocationResolver;
 
 /**
  * Displays a list of brands to select.
@@ -48,12 +46,9 @@ public class SearchByZipActivity extends Activity implements OnClickListener {
         final ProgressDialog spinner = ProgressDialog.show(this, getString(R.string.working_spinner),
                 getString(R.string.getting_current_zip), true, false);
 
-        // Acquire a reference to the system Location Manager
-        final LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-
-        // Define a listener that responds to location updates
-        final LocationListener locationListener = new LocationListener() {
-            public void onLocationChanged(Location location) {
+        LocationResolver.getCurrentLocation(this, new Callback<Location>() {
+            @Override
+            public void onSuccess(Location location) {
                 List<Address> addresses = null;
                 try {
                     addresses = new Geocoder(SearchByZipActivity.this).getFromLocation(location.getLatitude(),
@@ -73,34 +68,16 @@ public class SearchByZipActivity extends Activity implements OnClickListener {
                         e.printStackTrace();
                     }
                 } finally {
-                    locationManager.removeUpdates(this);
                     spinner.dismiss();
                 }
             }
 
-            public void onStatusChanged(String provider, int status, Bundle extras) {
-            }
-
-            public void onProviderEnabled(String provider) {
-            }
-
-            public void onProviderDisabled(String provider) {
-            }
-        };
-
-        // Request updates
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
-
-        // Wait 10 seconds before bailing
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
             @Override
-            public void run() {
-                locationManager.removeUpdates(locationListener);
-                spinner.dismiss();
-                enterZipInput.setText("55455");
+            public void onFailure(Location value) {
             }
-        }, 10000);
+
+        });
+
     }
 
     public void homeClicked(View view) {
