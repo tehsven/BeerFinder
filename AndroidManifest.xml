@@ -54,6 +54,11 @@
             android:label="@string/venue_label"
             android:theme="@style/MnTheme" >
         </activity>
+        <activity
+            android:name=".activities.BeerActivity"
+            android:label="@string/beer_label"
+            android:theme="@style/MnTheme" >
+        </activity>
     </application>
 
 </manifest>

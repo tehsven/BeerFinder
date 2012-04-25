@@ -2,6 +2,7 @@ package edu.umn.pinkpanthers.beerfinder.network;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.google.android.maps.GeoPoint;
 import android.app.Activity;
 import android.content.Context;
 import android.location.Location;
@@ -66,11 +67,16 @@ public class LocationResolver {
         List<Location> nearLocations = new ArrayList<Location>();
         for (int i = 0; i < numLocations; i++) {
             Location nearLocation = new Location(PROVIDER_NAME);
-            nearLocation.setLatitude(latitude + Math.random());
-            nearLocation.setLongitude(longitude + Math.random());
+            nearLocation.setLatitude(latitude + ((Math.random() - 0.5) * 0.06));
+            nearLocation.setLongitude(longitude + ((Math.random() - 0.5) * 0.06));
             nearLocations.add(nearLocation);
         }
         return nearLocations;
+    }
+
+    public static GeoPoint makeGeoPoint(Location defaultLocation) {
+        return new GeoPoint((int) (defaultLocation.getLatitude() * 1000000),
+                (int) (defaultLocation.getLongitude() * 1000000));
     }
 
 }

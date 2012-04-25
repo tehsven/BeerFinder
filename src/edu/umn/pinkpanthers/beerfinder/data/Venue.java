@@ -94,8 +94,8 @@ public class Venue implements Parcelable, Comparable<Venue> {
         return phoneNumber;
     }
 
-    public String getLocation() {
-        return location.toString();
+    public Location getLocation() {
+        return location;
     }
 
 }
