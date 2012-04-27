@@ -3,7 +3,7 @@
 
     <string name="app_name">Beer Finder</string>
     <string name="home">Home</string>
-    <string name="search_by_brand_label">Search By Brand</string>
+    <string name="search_by_brand_label">Search</string>
     <string name="search_by_zip_label">Search By Zip</string>
     <string name="title">Title</string>
     <string name="phone">Phone</string>
@@ -35,5 +35,6 @@
     <string name="working_spinner">Working…</string>
     <string name="getting_current_zip">Getting current zip…</string>
     <string name="beer_label">Beer</string>
+    <string name="search_term">Search Terms</string>
 
 </resources>

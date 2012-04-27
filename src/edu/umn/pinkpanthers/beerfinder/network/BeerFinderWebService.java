@@ -1,17 +1,17 @@
 package edu.umn.pinkpanthers.beerfinder.network;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 import android.location.Location;
 import edu.umn.pinkpanthers.beerfinder.data.Beer;
-import edu.umn.pinkpanthers.beerfinder.data.String;
 import edu.umn.pinkpanthers.beerfinder.data.Venue;
 
 public class BeerFinderWebService {
 	// stub out the different beers
-	public static Beer[] = {
+	public static Beer beer_list[] = {
 		new Beer(
 			"1",
 			"Oatmeal Stout",	// name
@@ -91,7 +91,7 @@ public class BeerFinderWebService {
 			"9", // hops
 			"4", // body
 			"7", // color
-			"The hoppiest IPA in the Midwest at 115 IBU! The Northwest Passage, once a virtually impassable route through Canada it has become the "secret" submarine route. Made with Canadian malts and four American hops, Northwest Passage goes well with Pho, Buffalo wings & bon fires"  // description
+			"The hoppiest IPA in the Midwest at 115 IBU! The Northwest Passage, once a virtually impassable route through Canada it has become the \"secret\" submarine route. Made with Canadian malts and four American hops, Northwest Passage goes well with Pho, Buffalo wings & bon fires"  // description
 		),new Beer(
 			"11",
 			"Guinness",	// name
@@ -112,46 +112,47 @@ public class BeerFinderWebService {
 	};
 	
 	// stub out 5 different Venues
-	public static Venue[] = {
+	public static Venue venue_list[] = {
 		new Venue(
 			"1",
 			"Sally's Salon & Eatery",
 			"712 Washington Ave. SE, Minneapolis MN",
 			"612.331.3231",
-			"Lat: 44.973628   Lon:-93.228087",
-			"1,2,3,4,5,6,7,8,9,10",
+			new Location("Lat: 44.973628   Lon:-93.228087"),
+			new ArrayList <String>(Arrays.asList("1","2","3","4","5","6","7","8","9","10"))
 		),
 		new Venue(
 			"2",
 			"Stub & Herb",
 			"227 SE Oak St, Minneapolis, MN 55455",
 			"612.379.0555",
-			"Lat: 44.973804   Lon:-93.226958",
-			"6,7,8,9,10,11,12,13,14,15"
+			new Location("Lat: 44.973804   Lon:-93.226958"),
+			new ArrayList <String>(Arrays.asList("6","7","8","9","10","11","12","13","14","15")) 
+			
 		),
 		new Venue(
 			"3",
 			"Kitty Cat Klub",
 			"315 14th Avenue SE, Minneapolis, MN 55414",
 			"612.331.9800",
-			"Lat: 44.980091  Log: -93.236325",
-			"1,2,3,13,14,15"
+			new Location("Lat: 44.980091  Log: -93.236325"),
+			new ArrayList <String>(Arrays.asList("1","2","3","13","14","15"))
 		),
 		new Venue(
-			"4"
+			"4",
 			"TCF Stadium",
 			"2009 University Ave SE, Minneapolis, MN 55455",
 			"n/a",
-			"Lat: 44.976532  Log: -93.224552",
-			"1,5,10,15"
+			new Location("Lat: 44.976532  Log: -93.224552"),
+			new ArrayList <String>(Arrays.asList("1,5,10,15"))
 		),
 		new Venue(
-			"5"
+			"5",
 			"Minneapolis Town Hall Brewery  ",
 			"1430 South Washington Ave, Minneapolis, MN 55454",
 			"612.339.8696",
-			"Lat: 44.973132  Log: -93.247694",
-			"2,4,6,8,10,12,14"
+			new Location("Lat: 44.973132  Log: -93.247694"),
+			new ArrayList <String>(Arrays.asList("2","4","6","8","10","12","14"))
 		)
 	};
 	
