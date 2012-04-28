@@ -4,11 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.UUID;
 
 import com.google.android.maps.GeoPoint;
 
-import android.location.Location;
 import edu.umn.pinkpanthers.beerfinder.data.Beer;
 import edu.umn.pinkpanthers.beerfinder.data.Venue;
 

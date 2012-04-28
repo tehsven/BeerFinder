@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/list_results_toolbar"
+    android:id="@+id/beer_toolbar"
     style="@style/Toolbar"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal" >
 
     <Button
-        android:id="@+id/list_results_toolbar_home_button"
+        android:id="@+id/beer_toolbar_home_button"
         style="@style/ToolbarButton"
         android:layout_weight="0"
-        android:onClick="homeClicked"
-        android:text="@string/map_results_label" />
+        android:onClick="backClicked"
+        android:text="@string/back" />
 
     <TextView
-        android:id="@+id/list_results_toolbar_title"
+        android:id="@+id/beer_toolbar_title"
         style="@style/ToolbarTitle"
         android:layout_width="match_parent"
         android:layout_gravity="center"
         android:layout_weight="1"
-        android:text="@string/list_results_label" />
+        android:text="@string/beer_label" />
 
 </LinearLayout>

@@ -86,12 +86,6 @@ public class ListResultsActivity extends ListActivity {
         finish();
     }
 
-    public void mapResultsClicked(View view) {
-        Intent mapResultsIntent = new Intent(this, MapResultsActivity.class);
-        startActivity(mapResultsIntent);
-        finish();
-    }
-
     private void startVenueActivity(Venue selectedVenue) {
         Intent venueIntent = new Intent(getApplicationContext(), VenueActivity.class);
         venueIntent.putExtra(Venue.SELECTED_VENUE, selectedVenue);
