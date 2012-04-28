@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.google.android.maps.GeoPoint;
 
-import android.location.Location;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -59,7 +58,8 @@ public class Venue implements Parcelable, Comparable<Venue> {
         dest.writeString(name);
         dest.writeString(address);
         dest.writeString(phoneNumber);
-        //dest.writeParcelable(location, flags);
+        dest.writeInt(location.getLatitudeE6());
+        dest.writeInt(location.getLongitudeE6());
         dest.writeList(beerIds);
     }
 
@@ -68,7 +68,7 @@ public class Venue implements Parcelable, Comparable<Venue> {
         name = in.readString();
         address = in.readString();
         phoneNumber = in.readString();
-        location = in.readParcelable(GeoPoint.class.getClassLoader());
+        location = new GeoPoint(in.readInt(), in.readInt());
         beerIds = new ArrayList<String>();
         in.readList(beerIds, String.class.getClassLoader());
     }

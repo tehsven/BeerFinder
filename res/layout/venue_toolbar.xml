@@ -11,7 +11,7 @@
         style="@style/ToolbarButton"
         android:layout_weight="0"
         android:onClick="homeClicked"
-        android:text="@string/home" />
+        android:text="@string/back" />
 
     <TextView
         android:id="@+id/venue_toolbar_title"

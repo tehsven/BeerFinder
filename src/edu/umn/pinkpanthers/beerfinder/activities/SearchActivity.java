@@ -24,10 +24,12 @@ public class SearchActivity extends Activity implements OnClickListener {
     }
 
     public void onClick(View v) {
+    	// Perform a search
         if (v.getId() == R.id.search_by_brand_button) {
             Intent searchByBrandIntent = new Intent(this, SearchByBeerActivity.class);
             startActivity(searchByBrandIntent);
         }
+        // view all venues nearby
         else if (v.getId() == R.id.search_by_zip_button) {
             Intent searchByZipIntent = new Intent(this, SearchByZipActivity.class);
             startActivity(searchByZipIntent);

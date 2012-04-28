@@ -39,7 +39,7 @@
             <Button
                 android:id="@+id/search_by_zip_button"
                 style="@style/MainButton"
-                android:text="@string/search_by_zip_label" />
+                android:text="@string/explore_location_area" />
         </LinearLayout>
     </LinearLayout>
 

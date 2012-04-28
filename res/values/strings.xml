@@ -5,6 +5,7 @@
     <string name="home">Home</string>
     <string name="search_by_brand_label">Search</string>
     <string name="search_by_zip_label">Search By Zip</string>
+    <string name="explore_location_area">Explore Local Area</string>
     <string name="title">Title</string>
     <string name="phone">Phone</string>
     <string name="back">Back</string>
@@ -35,6 +36,6 @@
     <string name="working_spinner">Working…</string>
     <string name="getting_current_zip">Getting current zip…</string>
     <string name="beer_label">Beer</string>
-    <string name="search_term">Search Terms</string>
+    <string name="search_term">Beer Search Terms</string>
 
 </resources>
