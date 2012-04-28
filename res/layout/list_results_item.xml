@@ -22,7 +22,7 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="4dp"
         android:text="Venue Address"
-        android:textSize="18dp"
+        android:textSize="12dp"
         android:textStyle="italic" />
 
     <ImageView

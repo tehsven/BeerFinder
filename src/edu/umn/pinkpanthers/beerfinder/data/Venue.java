@@ -100,5 +100,13 @@ public class Venue implements Parcelable, Comparable<Venue> {
     public GeoPoint getLocation() {
         return location;
     }
+    
+    public List<String> getBeers() {
+    	return beerIds;
+    }
+    
+    public String getID(){
+    	return venueId;
+    }
 
 }

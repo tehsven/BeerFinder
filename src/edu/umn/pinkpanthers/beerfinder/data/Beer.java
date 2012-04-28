@@ -86,12 +86,34 @@ public class Beer implements Parcelable, Comparable<Beer> {
         return 0;
     }
 
+    //-------------- Assessor methods ----------------//
+    
+    public String getID(){	
+    	return beerId;
+    }
+    
     public String getName() {
         return name;
     }
 
     public String getBreweryName() {
         return breweryName;
+    }
+    
+    public String getHopsRank(){
+    	return hopsRank;
+    }
+    
+    public String getBodyRank(){
+    	return bodyRank;
+    }
+    
+    public String getColorRank(){
+    	return colorRank;
+    }
+    
+    public String getDescription(){
+    	return description;
     }
 
 }

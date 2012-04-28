@@ -119,7 +119,7 @@ public class BeerFinderWebService {
 		new Venue(
 			"1",
 			"Sally's Salon & Eatery",
-			"712 Washington Ave. SE, Minneapolis MN",
+			"712 Washington Ave. SE \nMinneapolis MN",
 			"612.331.3231",
 			new GeoPoint((int)(1000000 * 44.973628), (int)(1000000 * -93.228087)),
 			new ArrayList <String>(Arrays.asList("1","2","3","4","5","6","7","8","9","10"))
@@ -130,7 +130,7 @@ public class BeerFinderWebService {
 			"227 SE Oak St \nMinneapolis, MN 55455",
 			"612.379.0555",
 			new GeoPoint((int)(1000000 * 44.973804), (int)(1000000 * -93.226958)),
-			new ArrayList <String>(Arrays.asList("6","7","8","9","10","11","12","13","14","15")) 
+			new ArrayList <String>(Arrays.asList("6","7","8","9","10","11","12")) 
 			
 		),
 		new Venue(
@@ -139,7 +139,7 @@ public class BeerFinderWebService {
 			"315 14th Avenue SE \nMinneapolis, MN 55414",
 			"612.331.9800",
 			new GeoPoint((int)(1000000 * 44.980091),(int)(1000000 * -93.236325)),
-			new ArrayList <String>(Arrays.asList("1","2","3","13","14","15"))
+			new ArrayList <String>(Arrays.asList("1","2","3","12"))
 		),
 		new Venue(
 			"4",
@@ -147,15 +147,15 @@ public class BeerFinderWebService {
 			"2009 University Ave SE \nMinneapolis, MN 55455",
 			"n/a",
 			new GeoPoint((int)(1000000 * 44.976532), (int)(1000000 * -93.224552)),
-			new ArrayList <String>(Arrays.asList("1,5,10,15"))
+			new ArrayList <String>(Arrays.asList("1,5,10"))
 		),
 		new Venue(
 			"5",
-			"Minneapolis Town Hall Brewery  ",
+			"Town Hall Brewery  ",
 			"1430 South Washington Ave \nMinneapolis, MN 55454",
 			"612.339.8696",
 			new GeoPoint((int)(1000000 * 44.973132), (int)(1000000 * -93.247694)),
-			new ArrayList <String>(Arrays.asList("2","4","6","8","10","12","14"))
+			new ArrayList <String>(Arrays.asList("2","4","6","8","10","12"))
 		)
 	};
 	
@@ -163,9 +163,7 @@ public class BeerFinderWebService {
     private final List<Venue> sortedVenueList = new ArrayList<Venue>();
     private static BeerFinderWebService instance;
 
-    private BeerFinderWebService() {
-        // TODO Implement some sort of "realistic" data
-        
+    private BeerFinderWebService() {        
         //Add defined beers to sortedBeerList
         for (int i = 0; i < beer_list.length; i++) {
             
@@ -202,6 +200,28 @@ public class BeerFinderWebService {
     public List<Venue> getSearchableVenueList() {
         List<Venue> sortedVenueListCopy = new ArrayList<Venue>(sortedVenueList);
         return sortedVenueListCopy;
+    }
+    
+    public Venue getVenueInfoFromServer(String venueID){
+    	// assume beer is not sorted by ID in sortedBeerList. -> iterate over list
+    	for(Venue site: sortedVenueList){
+    		if(site.getID().equals(venueID)){
+    			return site;
+    		}
+    	}
+    	
+    	return null;
+    }
+    
+    public Beer getBeerInfoFromServer(String beerID){
+    	// assume beer is not sorted by ID in sortedBeerList. -> iterate over list
+    	for(Beer can : sortedBeerList){
+    		if(can.getID().equals(beerID)){
+    			return can;
+    		}
+    	}
+    	
+    	return null;
     }
 
 }

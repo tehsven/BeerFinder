@@ -36,6 +36,7 @@
     <string name="working_spinner">Working…</string>
     <string name="getting_current_zip">Getting current zip…</string>
     <string name="beer_label">Beer</string>
+    <string name="beers_label">Beers</string>
     <string name="search_term">Beer Search Terms</string>
 
 </resources>
