@@ -66,7 +66,7 @@ public class MapResultsActivity extends MapActivity {
 
         // Add an overlay for each Venue
         for (Venue venue : venues) {
-            GeoPoint venuePoint = LocationResolver.makeGeoPoint(venue.getLocation());
+            GeoPoint venuePoint = venue.getLocation();
             OverlayItem venueItem = new OverlayItem(venuePoint, venue.getName(), venue.getAddress());
             venueOverlay.addOverlay(venueItem);
         }

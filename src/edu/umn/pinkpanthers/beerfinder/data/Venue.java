@@ -18,7 +18,7 @@ public class Venue implements Parcelable, Comparable<Venue> {
     private String name;
     private String address;
     private String phoneNumber;
-    private Location location;
+    private GeoPoint location;
     private List<String> beerIds;
 
     public static final Parcelable.Creator<Venue> CREATOR = new Parcelable.Creator<Venue>() {
@@ -39,7 +39,7 @@ public class Venue implements Parcelable, Comparable<Venue> {
             String name, 
             String address, 
             String phoneNumber, 
-            Location location, 
+            GeoPoint location, 
             List<String> beerIds) 
 {
     this.venueId = venueId;
@@ -65,7 +65,7 @@ public class Venue implements Parcelable, Comparable<Venue> {
         name = in.readString();
         address = in.readString();
         phoneNumber = in.readString();
-        location = in.readParcelable(Location.class.getClassLoader());
+        location = in.readParcelable(GeoPoint.class.getClassLoader());
         beerIds = new ArrayList<String>();
         in.readList(beerIds, String.class.getClassLoader());
     }
@@ -94,7 +94,7 @@ public class Venue implements Parcelable, Comparable<Venue> {
         return phoneNumber;
     }
 
-    public Location getLocation() {
+    public GeoPoint getLocation() {
         return location;
     }
 
