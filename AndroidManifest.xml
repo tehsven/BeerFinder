@@ -20,7 +20,7 @@
         <activity
             android:name=".activities.SearchActivity"
             android:label="@string/app_name"
-            android:theme="@style/MnTheme" >
+            android:theme="@style/BeerFinderTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,32 +30,32 @@
         <activity
             android:name=".activities.SearchByZipActivity"
             android:label="@string/search_by_zip_label"
-            android:theme="@style/MnTheme" >
+            android:theme="@style/BeerFinderTheme" >
         </activity>
         <activity
             android:name=".activities.SearchByBeerActivity"
             android:label="@string/search_by_brand_label"
-            android:theme="@style/MnTheme" >
+            android:theme="@style/BeerFinderTheme" >
         </activity>
         <activity
             android:name=".activities.MapResultsActivity"
             android:label="@string/map_results_label"
-            android:theme="@style/MnTheme" >
+            android:theme="@style/BeerFinderTheme" >
         </activity>
         <activity
             android:name=".activities.ListResultsActivity"
             android:label="@string/list_results_label"
-            android:theme="@style/MnTheme" >
+            android:theme="@style/BeerFinderTheme" >
         </activity>
         <activity
             android:name=".activities.VenueActivity"
             android:label="@string/venue_label"
-            android:theme="@style/MnTheme" >
+            android:theme="@style/BeerFinderTheme" >
         </activity>
         <activity
             android:name=".activities.BeerActivity"
             android:label="@string/beer_label"
-            android:theme="@style/MnTheme" >
+            android:theme="@style/BeerFinderTheme" >
         </activity>
     </application>
 

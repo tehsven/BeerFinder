@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="background_start">#FFE699</color>
-    <color name="background_stop">#FFD453</color>
-    <color name="foreground_start">#7A0019</color>
-    <color name="foreground_stop">#48000F</color>
-    <color name="border">#000</color>
-    <color name="tool_text_color">#fff</color>
-    <color name="text_color_black">#000000</color>
+    <color name="background_start">#111111</color>
+    <color name="background_stop">#222222</color>
+    <color name="foreground_start">#0600B3</color>
+    <color name="foreground_stop">#0E0086</color>
+    <color name="border">#444444</color>
+    <color name="tool_text_color">#FFFFFF</color>
+    <color name="text_color_black">#FFFFFF</color>
 </resources>
