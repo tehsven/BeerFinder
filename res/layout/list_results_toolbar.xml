@@ -11,7 +11,7 @@
         style="@style/ToolbarButton"
         android:layout_weight="0"
         android:onClick="homeClicked"
-        android:text="@string/back" />
+        android:text="@string/map_results_label" />
 
     <TextView
         android:id="@+id/list_results_toolbar_title"
@@ -20,12 +20,5 @@
         android:layout_gravity="center"
         android:layout_weight="1"
         android:text="@string/list_results_label" />
-
-    <Button
-        android:id="@+id/list_results_toolbar_button"
-        style="@style/ToolbarButton"
-        android:layout_width="wrap_content"
-        android:onClick="mapResultsClicked"
-        android:text="@string/map_results_label" />
 
 </LinearLayout>

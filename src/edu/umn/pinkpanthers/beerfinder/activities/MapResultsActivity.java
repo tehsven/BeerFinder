@@ -46,7 +46,6 @@ public class MapResultsActivity extends MapActivity {
     public void listResultsClicked(View view) {
         Intent listResultsIntent = new Intent(this, ListResultsActivity.class);
         startActivity(listResultsIntent);
-        finish();
     }
 
     @Override
