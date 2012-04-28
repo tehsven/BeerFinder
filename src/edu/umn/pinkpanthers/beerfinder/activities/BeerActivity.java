@@ -2,7 +2,6 @@ package edu.umn.pinkpanthers.beerfinder.activities;
 
 import edu.umn.pinkpanthers.beerfinder.R;
 import edu.umn.pinkpanthers.beerfinder.data.Beer;
-import edu.umn.pinkpanthers.beerfinder.data.Venue;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
