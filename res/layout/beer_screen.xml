@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/beer_toolbar" />
+
+    <ScrollView
+        android:id="@+id/venue_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/item_background"
+            android:orientation="vertical" >
+
+     <!-- Hops -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+                <TextView
+                    android:id="@+id/beer_hops"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/beer_hops"
+                    android:layout_marginLeft="16dp"
+                />
+                
+                <ImageView 
+                    android:id="@+id/beer_hops_star"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+            		android:layout_marginTop="4dp"
+                    android:layout_gravity="right"
+                    android:src="@drawable/na"
+                    
+                />
+            </LinearLayout>
+            
+    <!-- Body -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+                <TextView
+                    android:id="@+id/beer_body"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/beer_body"
+                    android:layout_marginLeft="16dp"
+                />
+                
+                <ImageView 
+                    android:id="@+id/beer_body_star"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+            		android:layout_marginTop="4dp"
+                    android:layout_gravity="right"
+                    android:src="@drawable/na"
+                />
+            </LinearLayout>
+            
+    <!-- Color -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+                <TextView
+                    android:id="@+id/beer_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/beer_color"
+                    android:layout_marginLeft="16dp"
+                />
+                
+                <ImageView 
+                    android:id="@+id/beer_color_star"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+            		android:layout_marginTop="4dp"
+                    android:layout_gravity="right"
+                    android:src="@drawable/na"
+                />
+            </LinearLayout>
+            
+            
+            
+        	<TextView
+                android:id="@+id/beer_desciption_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/beer_description"
+                android:layout_gravity="center"
+                android:layout_marginLeft="16dp"
+                android:layout_marginBottom="10dp"
+            />
+            
+			<TextView
+                android:id="@+id/beer_desciption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+            />
+            
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

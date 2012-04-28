@@ -38,5 +38,9 @@
     <string name="beer_label">Beer</string>
     <string name="beers_label">Beers</string>
     <string name="search_term">Beer Search Terms</string>
+    <string name="beer_hops">Hops</string>
+    <string name="beer_body">Body</string>
+    <string name="beer_color">Color</string>
+    <string name="beer_description">Description</string>
 
 </resources>
