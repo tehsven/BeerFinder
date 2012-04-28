@@ -86,8 +86,6 @@ public class Beer implements Parcelable, Comparable<Beer> {
         return 0;
     }
 
-    //-------------- Assessor methods ----------------//
-    
     public String getID(){	
     	return beerId;
     }

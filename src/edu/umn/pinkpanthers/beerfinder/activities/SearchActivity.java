@@ -14,26 +14,26 @@ import edu.umn.pinkpanthers.beerfinder.network.BeerFinderWebService;
  */
 public class SearchActivity extends Activity implements OnClickListener {
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.search_screen);
-        findViewById(R.id.search_by_brand_button).setOnClickListener(this);
-        findViewById(R.id.search_by_zip_button).setOnClickListener(this);
-        BeerFinderWebService.initialize();
-    }
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.search_screen);
+		findViewById(R.id.search_by_brand_button).setOnClickListener(this);
+		findViewById(R.id.search_by_zip_button).setOnClickListener(this);
+		BeerFinderWebService.initialize();
+	}
 
-    public void onClick(View v) {
-    	// Perform a search
-        if (v.getId() == R.id.search_by_brand_button) {
-            Intent searchByBrandIntent = new Intent(this, SearchByBeerActivity.class);
-            startActivity(searchByBrandIntent);
-        }
-        // view all venues nearby
-        else if (v.getId() == R.id.search_by_zip_button) {
-            Intent searchByZipIntent = new Intent(this, SearchByZipActivity.class);
-            startActivity(searchByZipIntent);
-        }
-    }
+	public void onClick(View v) {
+		// Perform a search
+		if (v.getId() == R.id.search_by_brand_button) {
+			Intent searchByBrandIntent = new Intent(this, SearchByBeerActivity.class);
+			startActivity(searchByBrandIntent);
+		}
+		// view all venues nearby
+		else if (v.getId() == R.id.search_by_zip_button) {
+			Intent searchByZipIntent = new Intent(this, SearchByZipActivity.class);
+			startActivity(searchByZipIntent);
+		}
+	}
 
 }

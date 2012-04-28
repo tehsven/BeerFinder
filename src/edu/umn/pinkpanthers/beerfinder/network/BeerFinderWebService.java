@@ -11,7 +11,7 @@ import edu.umn.pinkpanthers.beerfinder.data.Beer;
 import edu.umn.pinkpanthers.beerfinder.data.Venue;
 
 public class BeerFinderWebService {
-	// stub out the different beers
+	// Stub out the different beers
 	public static Beer beer_list[] = {
 		new Beer(
 			"1",
@@ -21,7 +21,8 @@ public class BeerFinderWebService {
 			"8", 				// body
 			"10",	 			// color
 			"While its cascading rich black color will be familiar to Stout enthusiasts, ours is decidedly different. It's made with naked oats from the UK, for one. Smooth and slightly sweet, with hints of coffee, caramel and chocolate. Sold only on draught in select places."  // description
-		),new Beer(
+		),
+		new Beer(
 			"2",
 			"Horizon Red Ale",	// name
 			"Summit", 			// brewery
@@ -29,7 +30,8 @@ public class BeerFinderWebService {
 			"6", // body
 			"6", // color
 			"An inspired hybrid that blurs the boundaries between IPA and Amber styles. The exceptional blend of American hops (including the harder-to-find Horizon variety) gives it an intense pine, citrus and earthy character in the nose and on the tongue."  // description
-		),new Beer(
+		),
+		new Beer(
 			"3",
 			"Extra Pale Ale",	// name
 			"Summit", // brewery
@@ -37,7 +39,8 @@ public class BeerFinderWebService {
 			"6", // body
 			"4", // color
 			"A pioneer in craft beer (hey, that rhymes), Summit EPA has been gracing the pint glasses of serious brew lovers since 1986. Bronze color. Gold medal-winning flavor. With caramel, biscuity malts superbly balanced with an earthy hop bite and juicy citrus."  // description
-		),new Beer(
+		),
+		new Beer(
 			"4",
 			"Maibock",	// name
 			"Summit", // brewery
@@ -45,7 +48,8 @@ public class BeerFinderWebService {
 			"8", // body
 			"2", // color
 			"This traditional German style earned the nickname “liquid bread” because it was brewed by monks to help them get through Lenten fasting. Moravian 37 malts and Czech Saaz hops give it a toasted sweetness with a little spice in the finish."  // description
-		),new Beer(
+		),
+		new Beer(
 			"5",
 			"Furious",	// name
 			"Surly", // brewery
@@ -53,7 +57,8 @@ public class BeerFinderWebService {
 			"5", // body
 			"3", // color
 			"A tempest on the tongue, or a moment of pure hop bliss? Brewed with a dazzling blend of American hops and Scottish malt, this crimson-hued ale delivers waves of citrus, pine and caramel-toffee. For those who favor flavor, Furious has the hop-fire your taste buds have been screeching for."  // description
-		),new Beer(
+		),
+		new Beer(
 			"6",
 			"Coffee Bender",	// name
 			"Surly", // brewery
@@ -61,7 +66,8 @@ public class BeerFinderWebService {
 			"6", // body
 			"9", // color
 			"Coffee Bender refreshes like an iced-coffee, is aromatic as a bag of whole beans as satisfies like your favorite beer. The Surly brew team has developed a cold extraction process that results in intense coffee aromatics and flavor bringing together two of our favorite beverages. Your only dilemma will be whether to finish your day or start it with a Coffee Bender."  // description
-		),new Beer(
+		),
+		new Beer(
 			"7",
 			"CynicAle",	// name
 			"Surly", // brewery
@@ -69,7 +75,8 @@ public class BeerFinderWebService {
 			"6", // body
 			"1", // color
 			"Oh great, a fizzy yellow beer in a can, that's just what the craft beer world needs! CynicAle melds Old World ingredients in a new school style. French malted barley, English oats and Belgian yeast create honey & black pepper flavors. Lively Slovenian hops provide the floral, apricot and peach notes. Toss your doubts away, toss one back and enjoy!"  // description
-		),new Beer(
+		),
+		new Beer(
 			"8",
 			"Belgian White",	// name
 			"Blue Moon Brewing Co", // brewery
@@ -77,7 +84,8 @@ public class BeerFinderWebService {
 			"7", // body
 			"5", // color
 			"They've been brewing cloudy beer in Belgium for more than 300 years now. This unfiltered style of ale combines malt, wheat and oats, giving the belgian white its signature cloudy appearance and smooth, full-bodied taste."  // description
-		),new Beer(
+		),
+		new Beer(
 			"9",
 			"Winter Abbey Ale",	// name
 			"Blue Moon Brewing Co.", // brewery
@@ -85,7 +93,8 @@ public class BeerFinderWebService {
 			"5", // body
 			"5", // color
 			"An abbey ale crafted with roasted malts, hint of Belgian sugar, and a touch of wheat. Rich caramel and toffee notes. Pair with hearty stews and chocolate desserts."  // description	
-		),new Beer(
+		),
+		new Beer(
 			"10",
 			"North West Passage",	// name
 			"Flat Earth", // brewery
@@ -93,7 +102,8 @@ public class BeerFinderWebService {
 			"4", // body
 			"7", // color
 			"The hoppiest IPA in the Midwest at 115 IBU! The Northwest Passage, once a virtually impassable route through Canada it has become the \"secret\" submarine route. Made with Canadian malts and four American hops, Northwest Passage goes well with Pho, Buffalo wings & bon fires"  // description
-		),new Beer(
+		),
+		new Beer(
 			"11",
 			"Guinness",	// name
 			"Diageo", // brewery
@@ -101,7 +111,8 @@ public class BeerFinderWebService {
 			"8", // body
 			"10", // color
 			"Swirling clouds tumble as the storm begins to calm, settle, breathe in the moment, then break through the smooth, light head to the bittersweet reward. Unmistakeably GUINNESS® beer, stout, or draught , from the first velvet sip to the last, lingering drop. And every deep-dark satisfying mouthful in between. Pure beauty."  // description
-		),new Beer(
+		),
+		new Beer(
 			"12",
 			"Stella Artois",	// name
 			"Stella Artois", // brewery
@@ -156,70 +167,71 @@ public class BeerFinderWebService {
 			new ArrayList <String>(Arrays.asList("2","4","6","8","10","12"))
 		)
 	};
-	
-    private final List<Beer> sortedBeerList = new ArrayList<Beer>();
-    private final List<Venue> sortedVenueList = new ArrayList<Venue>();
-    private static BeerFinderWebService instance;
 
-    private BeerFinderWebService() {        
-        //Add defined beers to sortedBeerList
-        for (int i = 0; i < beer_list.length; i++) {
-            
-            sortedBeerList.add(beer_list[i]);
-        }
-        Collections.sort(sortedBeerList);
+	private final List<Beer> sortedBeerList = new ArrayList<Beer>();
+	private final List<Venue> sortedVenueList = new ArrayList<Venue>();
+	private static BeerFinderWebService instance;
 
-        // Add defined venues to sortedVenueList
-        for (int i = 0; i < venue_list.length; i++)
-        {
-        	sortedVenueList.add(venue_list[i]);
-        }
-        Collections.sort(sortedVenueList);
-    }
-    
-    public static void initialize() {
-        if (instance == null) {
-            instance = new BeerFinderWebService();
-        }
-    }
-    
-    public static BeerFinderWebService getInstance() {
-        if (instance == null) {
-            throw new RuntimeException("Cannot access uninitialized instance! Call initialize() first!");
-        }
-        return instance;
-    }
+	private BeerFinderWebService() {
+		// Add defined beers to sortedBeerList
+		for (int i = 0; i < beer_list.length; i++) {
 
-    public List<Beer> getSearchableBeerList() {
-        List<Beer> sortedBeerListCopy = new ArrayList<Beer>(sortedBeerList);
-        return sortedBeerListCopy;
-    }
+			sortedBeerList.add(beer_list[i]);
+		}
+		Collections.sort(sortedBeerList);
 
-    public List<Venue> getSearchableVenueList() {
-        List<Venue> sortedVenueListCopy = new ArrayList<Venue>(sortedVenueList);
-        return sortedVenueListCopy;
-    }
-    
-    public Venue getVenueInfoFromServer(String venueID){
-    	// assume beer is not sorted by ID in sortedBeerList. -> iterate over list
-    	for(Venue site: sortedVenueList){
-    		if(site.getID().equals(venueID)){
-    			return site;
-    		}
-    	}
-    	
-    	return null;
-    }
-    
-    public Beer getBeerInfoFromServer(String beerID){
-    	// assume beer is not sorted by ID in sortedBeerList. -> iterate over list
-    	for(Beer can : sortedBeerList){
-    		if(can.getID().equals(beerID)){
-    			return can;
-    		}
-    	}
-    	
-    	return null;
-    }
+		// Add defined venues to sortedVenueList
+		for (int i = 0; i < venue_list.length; i++) {
+			sortedVenueList.add(venue_list[i]);
+		}
+		Collections.sort(sortedVenueList);
+	}
+
+	public static void initialize() {
+		if (instance == null) {
+			instance = new BeerFinderWebService();
+		}
+	}
+
+	public static BeerFinderWebService getInstance() {
+		if (instance == null) {
+			throw new RuntimeException("Cannot access uninitialized instance! Call initialize() first!");
+		}
+		return instance;
+	}
+
+	public List<Beer> getSearchableBeerList() {
+		List<Beer> sortedBeerListCopy = new ArrayList<Beer>(sortedBeerList);
+		return sortedBeerListCopy;
+	}
+
+	public List<Venue> getSearchableVenueList() {
+		List<Venue> sortedVenueListCopy = new ArrayList<Venue>(sortedVenueList);
+		return sortedVenueListCopy;
+	}
+
+	public Venue getVenueInfoFromServer(String venueID) {
+		// assume beer is not sorted by ID in sortedBeerList. -> iterate over
+		// list
+		for (Venue site : sortedVenueList) {
+			if (site.getID().equals(venueID)) {
+				return site;
+			}
+		}
+
+		return null;
+	}
+
+	public Beer getBeerInfoFromServer(String beerID) {
+		// assume beer is not sorted by ID in sortedBeerList. -> iterate over
+		// list
+		for (Beer can : sortedBeerList) {
+			if (can.getID().equals(beerID)) {
+				return can;
+			}
+		}
+
+		return null;
+	}
 
 }

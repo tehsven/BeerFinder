@@ -19,86 +19,77 @@ import edu.umn.pinkpanthers.beerfinder.network.BeerFinderWebService;
 
 public class VenueActivity extends Activity {
 
-    private TextView nameView;
-    private TextView addressView;
-    private TextView phoneNumber;
-    private Venue venue;
+	private TextView nameView;
+	private TextView addressView;
+	private TextView phoneNumber;
+	private Venue venue;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
 
-        venue = getIntent().getExtras().getParcelable(Venue.SELECTED_VENUE);
+		venue = getIntent().getExtras().getParcelable(Venue.SELECTED_VENUE);
 
-        this.setContentView(R.layout.venue_screen);
+		this.setContentView(R.layout.venue_screen);
 
-        nameView = (TextView) findViewById(R.id.venue_toolbar_title);
-        addressView = (TextView) findViewById(R.id.venue_address_label);
-        phoneNumber = (TextView) findViewById(R.id.venue_phone_number_label);
+		nameView = (TextView) findViewById(R.id.venue_toolbar_title);
+		addressView = (TextView) findViewById(R.id.venue_address_label);
+		phoneNumber = (TextView) findViewById(R.id.venue_phone_number_label);
 
-        updateView();
-    }
+		updateView();
+	}
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        // TODO
-    }
+	@Override
+	public void onResume() {
+		super.onResume();
+		// TODO
+	}
 
-    private void updateView() {
-        nameView.setText(venue.getName());
-        addressView.setText(venue.getAddress());
-        phoneNumber.setText(venue.getPhoneNumber());
+	private void updateView() {
+		nameView.setText(venue.getName());
+		addressView.setText(venue.getAddress());
+		phoneNumber.setText(venue.getPhoneNumber());
 
-        createBeerList();
-    }
+		createBeerList();
+	}
 
-    private void createBeerList() {
-        // TODO use the beerIds in the Venue to get the actual beers that
-        // correspond to this Venue
-//        List<Beer> beers = BeerFinderWebService.getInstance().getSearchableBeerList();
-        List<Beer> beers = new ArrayList<Beer>();
+	private void createBeerList() {
+		List<Beer> beers = new ArrayList<Beer>();
 
-        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        ViewGroup beerViewGroup = (ViewGroup) findViewById(R.id.venue_beer_list_group);
+		LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		ViewGroup beerViewGroup = (ViewGroup) findViewById(R.id.venue_beer_list_group);
 
-        // get data for each of the beers from the "webserver"
-        for(String beerID : venue.getBeers()){
-        	Beer can = BeerFinderWebService.getInstance().getBeerInfoFromServer(beerID);
-        	
-        	if(can != null){
-        		beers.add(can);	// add to list for later reference..
-        	//	Toast.makeText(this, "Beer: " + can.getName() + "  " + can.getID(), Toast.LENGTH_SHORT).show();
-        	}
-        	// update display information
-        	
-        }
-        
-        //Toast.makeText(this, "Beer count: " + beers.size(), Toast.LENGTH_SHORT).show();
-        
-        // update display to show each of the beers
-        for (Beer beer : beers) {
-            View beerView = inflater.inflate(R.layout.venue_beer_list_item, null);
-            beerView.setTag(beer);
-            
-            ((TextView) beerView.findViewById(R.id.venue_beer_list_item_name)).setText(beer.getName());
-            ((TextView) beerView.findViewById(R.id.venue_beer_list_item_brewery)).setText(beer.getBreweryName());
+		// Get data for each of the beers from the BeerFinderWebService
+		for (String beerID : venue.getBeers()) {
+			Beer can = BeerFinderWebService.getInstance().getBeerInfoFromServer(beerID);
+			if (can != null) {
+				beers.add(can); // add to list for later reference..
+			}
+		}
 
-            beerView.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent beerIntent = new Intent(getApplicationContext(), BeerActivity.class);
-                    beerIntent.putExtra(Beer.SELECTED_BEER, (Beer)view.getTag());
-                    startActivity(beerIntent);
-                }
-            });
-            
-            beerViewGroup.addView(beerView);
-        }
-    }
+		// Update display to show each of the beers
+		for (Beer beer : beers) {
+			View beerView = inflater.inflate(R.layout.venue_beer_list_item, null);
+			beerView.setTag(beer);
 
-    public void homeClicked(View view) {
-        finish();
-    }
+			((TextView) beerView.findViewById(R.id.venue_beer_list_item_name)).setText(beer.getName());
+			((TextView) beerView.findViewById(R.id.venue_beer_list_item_brewery)).setText(beer.getBreweryName());
+
+			beerView.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View view) {
+					Intent beerIntent = new Intent(getApplicationContext(), BeerActivity.class);
+					beerIntent.putExtra(Beer.SELECTED_BEER, (Beer) view.getTag());
+					startActivity(beerIntent);
+				}
+			});
+
+			beerViewGroup.addView(beerView);
+		}
+	}
+
+	public void homeClicked(View view) {
+		finish();
+	}
 
 }

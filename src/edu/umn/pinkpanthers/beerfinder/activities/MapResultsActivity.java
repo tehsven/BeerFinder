@@ -23,102 +23,98 @@ import edu.umn.pinkpanthers.beerfinder.network.LocationResolver;
 
 public class MapResultsActivity extends MapActivity {
 
-    private MapView mapView;
+	private MapView mapView;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.map_results_screen);
-        mapView = (MapView) findViewById(R.id.map_results_view);
-        mapView.setBuiltInZoomControls(true);
-        mapView.setSatellite(false);
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.map_results_screen);
+		mapView = (MapView) findViewById(R.id.map_results_view);
+		mapView.setBuiltInZoomControls(true);
+		mapView.setSatellite(false);
 
-        Location defaultLocation = LocationResolver.getDefaultLocation();
-        GeoPoint defaultPoint = LocationResolver.makeGeoPoint(defaultLocation);
-        MapController mc = mapView.getController();
-        mc.setCenter(defaultPoint);
-        mc.setZoom(14);
+		Location defaultLocation = LocationResolver.getDefaultLocation();
+		GeoPoint defaultPoint = LocationResolver.makeGeoPoint(defaultLocation);
+		MapController mc = mapView.getController();
+		mc.setCenter(defaultPoint);
+		mc.setZoom(14);
 
-        createOverlays();
-    }
+		createOverlays();
+	}
 
-    public void homeClicked(View view) {
-        finish();
-    }
+	public void homeClicked(View view) {
+		finish();
+	}
 
-    public void listResultsClicked(View view) {
-        Intent listResultsIntent = new Intent(this, ListResultsActivity.class);
-        startActivity(listResultsIntent);
-    }
+	public void listResultsClicked(View view) {
+		Intent listResultsIntent = new Intent(this, ListResultsActivity.class);
+		startActivity(listResultsIntent);
+	}
 
-    @Override
-    protected boolean isRouteDisplayed() {
-        return false;
-    }
+	@Override
+	protected boolean isRouteDisplayed() {
+		return false;
+	}
 
-    private void createOverlays() {
-        // create the itemized overlay
-        Drawable drawable = this.getResources().getDrawable(android.R.drawable.btn_star_big_on);
-        VenueItemizedOverlay venueOverlay = new VenueItemizedOverlay(this, drawable);
-        mapView.getOverlays().add(venueOverlay);
+	private void createOverlays() {
+		// create the itemized overlay
+		Drawable drawable = this.getResources().getDrawable(android.R.drawable.btn_star_big_on);
+		VenueItemizedOverlay venueOverlay = new VenueItemizedOverlay(this, drawable);
+		mapView.getOverlays().add(venueOverlay);
 
-        // TODO make this into a query call, instead of just getting a
-        // searchable list of venues
-        List<Venue> venues = BeerFinderWebService.getInstance().getSearchableVenueList();
+		// TODO make this into a query call, instead of just getting a
+		// searchable list of venues
+		List<Venue> venues = BeerFinderWebService.getInstance().getSearchableVenueList();
 
-        // Add an overlay for each Venue
-        for (Venue venue : venues) {
-            GeoPoint venuePoint = venue.getLocation();
-            OverlayItem venueItem = new OverlayItem(venuePoint, venue.getName(), venue.getAddress());
-            venueOverlay.addOverlay(venueItem);
-        }
-    }
-   
+		// Add an overlay for each Venue
+		for (Venue venue : venues) {
+			GeoPoint venuePoint = venue.getLocation();
+			OverlayItem venueItem = new OverlayItem(venuePoint, venue.getName(), venue.getAddress());
+			venueOverlay.addOverlay(venueItem);
+		}
+	}
 
-    private class VenueItemizedOverlay extends ItemizedOverlay<OverlayItem> {
+	private class VenueItemizedOverlay extends ItemizedOverlay<OverlayItem> {
 
-        private ArrayList<OverlayItem> overlays = new ArrayList<OverlayItem>();
-        private Context _context;
+		private ArrayList<OverlayItem> overlays = new ArrayList<OverlayItem>();
+		private Context _context;
 
-        public VenueItemizedOverlay(Context context, Drawable drawable) {
-            super(boundCenterBottom(drawable));
-            _context = context;
-        }
+		public VenueItemizedOverlay(Context context, Drawable drawable) {
+			super(boundCenterBottom(drawable));
+			_context = context;
+		}
 
-        @Override
-        protected OverlayItem createItem(int i) {
-            return overlays.get(i);
-        }
+		@Override
+		protected OverlayItem createItem(int i) {
+			return overlays.get(i);
+		}
 
-        @Override
-        public int size() {
-            return overlays.size();
-        }
+		@Override
+		public int size() {
+			return overlays.size();
+		}
 
-        public void addOverlay(OverlayItem overlay) {
-            overlays.add(overlay);
-            populate();
-        }
-        
-        //Vlad: handle click venue event.
-        @Override
-        protected boolean onTap(int index) {
-          OverlayItem venueItem = overlays.get(index);
-          if (venueItem != null){
-        	  AlertDialog.Builder dialog = new AlertDialog.Builder(_context);
-              dialog.setTitle(venueItem.getTitle());
-              dialog.setMessage(venueItem.getSnippet());
-              dialog.show();
-              return true;
-          }
-          else{
-          return false;
-          }
-        	
-          
-        }
-        
-        
-    }
+		public void addOverlay(OverlayItem overlay) {
+			overlays.add(overlay);
+			populate();
+		}
+
+		// Handle click venue event.
+		@Override
+		protected boolean onTap(int index) {
+			OverlayItem venueItem = overlays.get(index);
+			if (venueItem != null) {
+				AlertDialog.Builder dialog = new AlertDialog.Builder(_context);
+				dialog.setTitle(venueItem.getTitle());
+				dialog.setMessage(venueItem.getSnippet());
+				dialog.show();
+				return true;
+			} else {
+				return false;
+			}
+
+		}
+
+	}
 
 }
