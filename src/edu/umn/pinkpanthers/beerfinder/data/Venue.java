@@ -2,6 +2,9 @@ package edu.umn.pinkpanthers.beerfinder.data;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.google.android.maps.GeoPoint;
+
 import android.location.Location;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -56,7 +59,7 @@ public class Venue implements Parcelable, Comparable<Venue> {
         dest.writeString(name);
         dest.writeString(address);
         dest.writeString(phoneNumber);
-        dest.writeParcelable(location, flags);
+        //dest.writeParcelable(location, flags);
         dest.writeList(beerIds);
     }
 

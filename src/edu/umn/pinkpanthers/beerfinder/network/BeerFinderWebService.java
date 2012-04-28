@@ -5,6 +5,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
+
+import com.google.android.maps.GeoPoint;
+
 import android.location.Location;
 import edu.umn.pinkpanthers.beerfinder.data.Beer;
 import edu.umn.pinkpanthers.beerfinder.data.Venue;
@@ -163,36 +166,17 @@ public class BeerFinderWebService {
     private BeerFinderWebService() {
         // TODO Implement some sort of "realistic" data
         
-        // Generate some Beers
-        int numberOfBeers = 50;
-        for (int i = 0; i < numberOfBeers; i++) {
-            Beer beer = new Beer(UUID.randomUUID().toString(), 
-                    "Beer Name " + i, 
-                    "Brewery " + i, 
-                    "Hops Rank " + i,
-                    "Body Rank " + i, 
-                    "Color Rank " + i, 
-                    "Description " + i);
-            sortedBeerList.add(beer);
+        //Add defined beers to sortedBeerList
+        for (int i = 0; i < beer_list.length; i++) {
+            
+            sortedBeerList.add(beer_list[i]);
         }
         Collections.sort(sortedBeerList);
 
-        // Generate some Venues
-        int numberOfVenues = 10;
-        List<Location> generatedLocations = LocationResolver.generateLocationsNear(
-                LocationResolver.getDefaultLocation(), numberOfVenues);
-        for (int i = 0; i < numberOfVenues; i++) {
-            List<String> beerIds = new ArrayList<String>();
-            for (int j = i*5; j < i*5+5; j++) {
-                beerIds.add(String.valueOf(i));
-            }
-            Venue venue = new Venue(UUID.randomUUID().toString(), 
-                    "Venue Name " + i, 
-                    "Address " + i, 
-                    "Phone Number " + i,
-                    generatedLocations.get(i),
-                    beerIds);
-            sortedVenueList.add(venue);
+        // Add defined venues to sortedVenueList
+        for (int i = 0; i < venue_list.length; i++)
+        {
+        	sortedVenueList.add(venue_list[i]);
         }
         Collections.sort(sortedVenueList);
     }
