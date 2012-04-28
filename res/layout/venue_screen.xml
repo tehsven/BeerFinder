@@ -20,7 +20,7 @@
             <TextView
                 android:id="@+id/venue_address_label"
                 android:layout_width="match_parent"
-	    		android:layout_height="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_margin="4dp"
                 android:layout_weight="1"
                 android:text="@string/todo"
@@ -30,7 +30,7 @@
             <TextView
                 android:id="@+id/venue_phone_number_label"
                 android:layout_width="match_parent"
-	    		android:layout_height="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="4dp"
                 android:layout_marginTop="12dp"
                 android:layout_weight="1"
@@ -38,10 +38,10 @@
                 android:textColor="@color/text_color_black"
                 android:textSize="18dp" />
 
-			<TextView
+            <TextView
                 android:id="@+id/venue_beers_label"
                 android:layout_width="match_parent"
-	    		android:layout_height="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="4dp"
                 android:layout_marginTop="12dp"
                 android:layout_weight="1"
@@ -50,13 +50,12 @@
                 android:textColor="@color/text_color_black"
                 android:textSize="20dp" />
 
-            <LinearLayout
+            <TableLayout
                 android:id="@+id/venue_beer_list_group"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight=".70" >
-            </LinearLayout>
-            
+                android:layout_height="fill_parent"
+                android:stretchColumns="1" >
+            </TableLayout>
         </LinearLayout>
     </ScrollView>
 
