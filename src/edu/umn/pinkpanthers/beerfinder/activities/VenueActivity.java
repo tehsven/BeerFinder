@@ -12,6 +12,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import edu.umn.pinkpanthers.beerfinder.R;
 import edu.umn.pinkpanthers.beerfinder.data.Beer;
 import edu.umn.pinkpanthers.beerfinder.data.Venue;
@@ -79,19 +80,16 @@ public class VenueActivity extends Activity {
         // update display to show each of the beers
         for (Beer beer : beers) {
             View beerView = inflater.inflate(R.layout.venue_beer_list_item, null);
-            //BeerListView beerView = inflater.inflate(R.layout.venue_beer_list_item, null);
-
+            beerView.setTag(beer);
+            
             ((TextView) beerView.findViewById(R.id.venue_beer_list_item_name)).setText(beer.getName());
             ((TextView) beerView.findViewById(R.id.venue_beer_list_item_brewery)).setText(beer.getBreweryName());
-
-            // TODO make the beerView remember what beer it's associated with so
-            // it can be passed to the BeerActivity
 
             beerView.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent beerIntent = new Intent(getApplicationContext(), BeerActivity.class);
-                    // TODO pass along the selected beer
+                    beerIntent.putExtra(Beer.SELECTED_BEER, (Beer)view.getTag());
                     startActivity(beerIntent);
                 }
             });
