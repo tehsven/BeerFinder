@@ -2,6 +2,9 @@ package edu.umn.pinkpanthers.beerfinder.activities;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
@@ -57,7 +60,7 @@ public class MapResultsActivity extends MapActivity {
     private void createOverlays() {
         // create the itemized overlay
         Drawable drawable = this.getResources().getDrawable(android.R.drawable.btn_star_big_on);
-        VenueItemizedOverlay venueOverlay = new VenueItemizedOverlay(drawable);
+        VenueItemizedOverlay venueOverlay = new VenueItemizedOverlay(this, drawable);
         mapView.getOverlays().add(venueOverlay);
 
         // TODO make this into a query call, instead of just getting a
@@ -71,13 +74,16 @@ public class MapResultsActivity extends MapActivity {
             venueOverlay.addOverlay(venueItem);
         }
     }
+   
 
     private class VenueItemizedOverlay extends ItemizedOverlay<OverlayItem> {
 
         private ArrayList<OverlayItem> overlays = new ArrayList<OverlayItem>();
+        private Context _context;
 
-        public VenueItemizedOverlay(Drawable drawable) {
+        public VenueItemizedOverlay(Context context, Drawable drawable) {
             super(boundCenterBottom(drawable));
+            _context = context;
         }
 
         @Override
@@ -94,6 +100,26 @@ public class MapResultsActivity extends MapActivity {
             overlays.add(overlay);
             populate();
         }
+        
+        //Vlad: handle click venue event.
+        @Override
+        protected boolean onTap(int index) {
+          OverlayItem venueItem = overlays.get(index);
+          if (venueItem != null){
+        	  AlertDialog.Builder dialog = new AlertDialog.Builder(_context);
+              dialog.setTitle(venueItem.getTitle());
+              dialog.setMessage(venueItem.getSnippet());
+              dialog.show();
+              return true;
+          }
+          else{
+          return false;
+          }
+        	
+          
+        }
+        
+        
     }
 
 }
