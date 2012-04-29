@@ -15,6 +15,10 @@ import android.os.Parcelable;
 public class Venue implements Parcelable, Comparable<Venue> {
 
 	public static String SELECTED_VENUE = "SELECTED_VENUE";
+	
+	public static final int VENUE_MODIFICATION_RESULT_NONE     = 0;
+	public static final int VENUE_MODIFICATION_RESULT_SUCCESS  = 1;
+	public static final int VENUE_MODIFICATION_RESULT_FAILURE  = 2;
 
 	private String venueId;
 	private String name;
@@ -22,6 +26,7 @@ public class Venue implements Parcelable, Comparable<Venue> {
 	private String phoneNumber;
 	private GeoPoint location;
 	private List<String> beerIds;
+	private int actionResult;
 
 	public static final Parcelable.Creator<Venue> CREATOR = new Parcelable.Creator<Venue>() {
 		public Venue createFromParcel(Parcel in) {
@@ -38,13 +43,14 @@ public class Venue implements Parcelable, Comparable<Venue> {
 	}
 
 	public Venue(String venueId, String name, String address, String phoneNumber, GeoPoint location,
-			List<String> beerIds) {
+			List<String> beerIds, int action) {
 		this.venueId = venueId;
 		this.name = name;
 		this.address = address;
 		this.phoneNumber = phoneNumber;
 		this.location = location;
 		this.beerIds = beerIds;
+		this.actionResult = action;
 	}
 
 	@Override
@@ -56,6 +62,7 @@ public class Venue implements Parcelable, Comparable<Venue> {
 		dest.writeInt(location.getLatitudeE6());
 		dest.writeInt(location.getLongitudeE6());
 		dest.writeList(beerIds);
+		dest.writeInt(actionResult);
 	}
 
 	private void readFromParcel(Parcel in) {
@@ -66,6 +73,7 @@ public class Venue implements Parcelable, Comparable<Venue> {
 		location = new GeoPoint(in.readInt(), in.readInt());
 		beerIds = new ArrayList<String>();
 		in.readList(beerIds, String.class.getClassLoader());
+		actionResult = in.readInt();
 	}
 
 	public int compareTo(Venue otherVenue) {
@@ -102,6 +110,10 @@ public class Venue implements Parcelable, Comparable<Venue> {
 
 	public String getID() {
 		return venueId;
+	}
+	
+	public int getActionResult() {
+		return actionResult;
 	}
 
 }

@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
+
+import android.os.AsyncTask;
+import android.util.Log;
 
 import com.google.android.maps.GeoPoint;
 
@@ -131,7 +135,8 @@ public class BeerFinderWebService {
 			"712 Washington Ave. SE \nMinneapolis MN",
 			"612.331.3231",
 			new GeoPoint((int)(1000000 * 44.973628), (int)(1000000 * -93.228087)),
-			new ArrayList <String>(Arrays.asList("1","2","3","4","5","6","7","8","9","10"))
+			new ArrayList <String>(Arrays.asList("1","2","3","4","5","6","7","8","9","10")),
+			Venue.VENUE_MODIFICATION_RESULT_NONE
 		),
 		new Venue(
 			"2",
@@ -139,8 +144,8 @@ public class BeerFinderWebService {
 			"227 SE Oak St \nMinneapolis, MN 55455",
 			"612.379.0555",
 			new GeoPoint((int)(1000000 * 44.973804), (int)(1000000 * -93.226958)),
-			new ArrayList <String>(Arrays.asList("6","7","8","9","10","11","12")) 
-			
+			new ArrayList <String>(Arrays.asList("6","7","8","9","10","11","12")),
+			Venue.VENUE_MODIFICATION_RESULT_NONE 
 		),
 		new Venue(
 			"3",
@@ -148,7 +153,8 @@ public class BeerFinderWebService {
 			"315 14th Avenue SE \nMinneapolis, MN 55414",
 			"612.331.9800",
 			new GeoPoint((int)(1000000 * 44.980091),(int)(1000000 * -93.236325)),
-			new ArrayList <String>(Arrays.asList("1","2","3","12"))
+			new ArrayList <String>(Arrays.asList("1","2","3","12")),
+			Venue.VENUE_MODIFICATION_RESULT_NONE
 		),
 		new Venue(
 			"4",
@@ -156,7 +162,8 @@ public class BeerFinderWebService {
 			"2009 University Ave SE \nMinneapolis, MN 55455",
 			"n/a",
 			new GeoPoint((int)(1000000 * 44.976532), (int)(1000000 * -93.224552)),
-			new ArrayList <String>(Arrays.asList("1,5,10"))
+			new ArrayList <String>(Arrays.asList("1,5,10")),
+			Venue.VENUE_MODIFICATION_RESULT_NONE
 		),
 		new Venue(
 			"5",
@@ -164,7 +171,8 @@ public class BeerFinderWebService {
 			"1430 South Washington Ave \nMinneapolis, MN 55454",
 			"612.339.8696",
 			new GeoPoint((int)(1000000 * 44.973132), (int)(1000000 * -93.247694)),
-			new ArrayList <String>(Arrays.asList("2","4","6","8","10","12"))
+			new ArrayList <String>(Arrays.asList("2","4","6","8","10","12")),
+			Venue.VENUE_MODIFICATION_RESULT_NONE
 		)
 	};
 
@@ -175,7 +183,6 @@ public class BeerFinderWebService {
 	private BeerFinderWebService() {
 		// Add defined beers to sortedBeerList
 		for (int i = 0; i < beer_list.length; i++) {
-
 			sortedBeerList.add(beer_list[i]);
 		}
 		Collections.sort(sortedBeerList);
@@ -210,28 +217,136 @@ public class BeerFinderWebService {
 		return sortedVenueListCopy;
 	}
 
-	public Venue getVenueInfoFromServer(String venueID) {
-		// assume beer is not sorted by ID in sortedBeerList. -> iterate over
-		// list
-		for (Venue site : sortedVenueList) {
-			if (site.getID().equals(venueID)) {
-				return site;
-			}
-		}
-
-		return null;
+	/**
+     *  Client: Venue request JSON
+     *  {
+     *      venue_id:  id,  // identifier for the bar
+     *      add             // list of beers to remove (usually null)
+     *      [
+     *          beer1,
+     *          beer2
+     *      ],
+     *      remove          // list of beers to add (usually null)
+     *      [
+     *          beer3
+     *      ]
+     *  }
+     *  
+     *  Server: Venue response JSON
+     *  {
+     *      venue_id:    id,                  // identifier of the bar
+     *      result:      success/failure/none // result of add/remove action
+     *      description: desc,                // information about the bar, hours, location, etc.
+     *      beers                             // beers on tap
+     *      [
+     *          beer 1,
+     *          beer 2,
+     *          ...
+     *      ]
+     *      comments:    count,               // number of comments for this location
+     *      longitude:   double,              //location of the venue
+     *      latitude:    double
+     *  }
+     *  
+     * @param venueID
+     * @return
+     */
+	public void getVenueInfoFromServer(final String venueID, Beer[] add, Beer[] remove, final Callback <Venue> cb) {
+		// fire off an Asynchronous thread to "perform" network activities...
+	    @SuppressWarnings("unused")
+		AsyncTask<Void, Void, String> result = new AsyncTask<Void, Void, String>() {
+            @Override
+            protected String doInBackground(Void... v) {
+                // fake out the network traffic by inserting a random delay before generating response data
+            	randomDelay(1000,200);
+            	
+            	synchronized(BeerFinderWebService.getInstance()){
+	            	// find Venue (data array is not sorted by Venue ID)
+	            	Venue location = null;
+	        		for (Venue site : sortedVenueList) {
+	        			if (site.getID().equals(venueID)) {
+	        				location = site;
+	        			}
+	        		}
+	        		
+	        		Log.d("BeerFinderWebService", "Venue Info Accessed: " + venueID);
+	                cb.onSuccess(location);
+            	}
+            	
+        		
+                
+				return null;
+            }
+        }.execute();
 	}
 
-	public Beer getBeerInfoFromServer(String beerID) {
-		// assume beer is not sorted by ID in sortedBeerList. -> iterate over
-		// list
-		for (Beer can : sortedBeerList) {
-			if (can.getID().equals(beerID)) {
-				return can;
-			}
+    /**
+     *
+     *  Client: Beer information JSON
+     *  {
+     *      beer_id:        id,           // beer identifier
+     *  }
+     *  
+     *  Server: Beer information response JSON
+     *  {
+     *      beer_id:        id,           // beer identifier
+     *      name:           beer,         // beer name
+     *      brewery:        brewery_name, // other beer attributes...
+     *      hoppiness:      hops_rank,
+     *      body:           body_rank,
+     *      color:          color_rank,
+     *      description:    desc,
+     *      search:         terms
+     *  }	
+	 */
+	public void getBeerInfoFromServer(final String beerID, final Callback <Beer> cb) {
+		// fire off an Asynchronous thread to "perform" network activities...
+	    @SuppressWarnings("unused")
+		AsyncTask<Void, Void, String> result = new AsyncTask<Void, Void, String>() {
+            @Override
+            protected String doInBackground(Void... v) {
+                // fake out the network traffic by inserting a random delay before generating response data
+            	randomDelay(2000,100);
+           
+            	synchronized(sortedBeerList){
+	            	// find Beer (data array is not sorted by Beer ID)
+	            	Beer bottle = null;
+	        		for (Beer can : sortedBeerList) {
+	        			if (can.getID().equals(beerID)) {
+	        				bottle = can;
+	        			}
+	        		}
+	        		
+	        		Log.d("BeerFinderWebService", "Beer Info Accessed: " + beerID);
+	                cb.onSuccess(bottle);
+        		}
+            
+        		
+                
+				return null;
+            }
+        }.execute();
+	}
+	
+	/**
+	 * Provide a delay of random length (with minimum size) to emulate the 
+	 * network latency.
+	 * 
+	 * @param lowerRange
+	 * @param upperRange
+	 */
+	private void randomDelay(int lowerRange, int upperRange){
+		if(upperRange <= lowerRange){
+			upperRange = 1000;
+			lowerRange = 100;
 		}
-
-		return null;
+		
+		try {
+			int sleep = (new Random()).nextInt(upperRange - lowerRange) + lowerRange;
+			Thread.sleep(sleep);
+		} catch (InterruptedException e) {
+			// do nothing special on an error.
+		}
 	}
 
 }
