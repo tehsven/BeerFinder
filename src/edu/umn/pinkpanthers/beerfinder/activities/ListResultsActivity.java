@@ -2,6 +2,7 @@ package edu.umn.pinkpanthers.beerfinder.activities;
 
 import java.util.List;
 import android.app.ListActivity;
+import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,12 +23,14 @@ import edu.umn.pinkpanthers.beerfinder.network.BeerFinderWebService;
 public class ListResultsActivity extends ListActivity {
 
 	private VenueAdapter venueAdapter;
+	private VenueAdapter search_venueAdapter;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.list_results_screen);
 		initListView();
+		handleIntent(getIntent());
 	}
 
 	@Override
@@ -92,5 +95,31 @@ public class ListResultsActivity extends ListActivity {
 		venueIntent.putExtra(Venue.SELECTED_VENUE, selectedVenue);
 		startActivity(venueIntent);
 	}
+	
+	@Override
+    protected void onNewIntent(Intent intent) {
+        setIntent(intent);
+        handleIntent(intent);
+    }
+	
+	private void handleIntent(Intent intent) {
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+          String query = intent.getStringExtra(SearchManager.QUERY);
+          
+          List<Venue> searchableVenus = this.getSearchableVenueList();//BeerFinderWebService.getInstance().getSearchableVenueList();
+          
+          for (int i=0;i<searchableVenus.size();i++)
+          {
+        	 if (query.equals(searchableVenus.get(i).getName())){
+        		 Venue venue = searchableVenus.get(i);
+        		 searchableVenus.clear();
+        		 searchableVenus.add(venue);
+        		 search_venueAdapter = new VenueAdapter(this, R.layout.list_results_item, searchableVenus);
+                 setListAdapter(search_venueAdapter);
+        	 }        		 
+          }
+        }
+	}
+	
 
 }

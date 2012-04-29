@@ -42,5 +42,6 @@
     <string name="beer_body">Body</string>
     <string name="beer_color">Color</string>
     <string name="beer_description">Description</string>
+    <string name="search_hint">Search Venues</string>
 
 </resources>
