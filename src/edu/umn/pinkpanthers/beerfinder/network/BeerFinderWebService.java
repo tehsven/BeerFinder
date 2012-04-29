@@ -12,6 +12,7 @@ import android.util.Log;
 import com.google.android.maps.GeoPoint;
 
 import edu.umn.pinkpanthers.beerfinder.data.Beer;
+import edu.umn.pinkpanthers.beerfinder.data.SearchResults;
 import edu.umn.pinkpanthers.beerfinder.data.Venue;
 
 public class BeerFinderWebService {
@@ -162,7 +163,7 @@ public class BeerFinderWebService {
 			"2009 University Ave SE \nMinneapolis, MN 55455",
 			"n/a",
 			new GeoPoint((int)(1000000 * 44.976532), (int)(1000000 * -93.224552)),
-			new ArrayList <String>(Arrays.asList("1,5,10")),
+			new ArrayList <String>(Arrays.asList("1","5","10")),
 			Venue.VENUE_MODIFICATION_RESULT_NONE
 		),
 		new Venue(
@@ -180,6 +181,11 @@ public class BeerFinderWebService {
 	private final List<Venue> sortedVenueList = new ArrayList<Venue>();
 	private static BeerFinderWebService instance;
 
+	/** 
+	 * Private 'Singleton' constructor
+	 * pre-fill data lists is the static, hard-coded data. This data will 
+	 * take the place of a server database.
+	 */
 	private BeerFinderWebService() {
 		// Add defined beers to sortedBeerList
 		for (int i = 0; i < beer_list.length; i++) {
@@ -194,12 +200,19 @@ public class BeerFinderWebService {
 		Collections.sort(sortedVenueList);
 	}
 
+	/**
+	 * Create the 'Singleton' object.
+	 */
 	public static void initialize() {
 		if (instance == null) {
 			instance = new BeerFinderWebService();
 		}
 	}
 
+	/**
+	 * 'Singleton' accessor method.
+	 * @return
+	 */
 	public static BeerFinderWebService getInstance() {
 		if (instance == null) {
 			throw new RuntimeException("Cannot access uninitialized instance! Call initialize() first!");
@@ -217,6 +230,72 @@ public class BeerFinderWebService {
 		return sortedVenueListCopy;
 	}
 
+	/**
+     *  
+     *  Client: Search request JSON
+     *  {
+     *      “id”:            “000001”,
+     *      “lat”:            xx,      // latitude of user
+     *      “long”:           yy,      // longitude of user
+     *      “result_count”:   25,      // number of results to send
+     *      “result_start”:   50,      // offset into server result list to send (page 2)
+     *      “search_string”:  terms    // user entered search string
+     *  }
+
+     *  Server: Search response JSON
+     *  {
+     *      “lat_center”:      xx,		// where search was centered
+     *      “long_center”:     yy,	    // where search was centered
+     *      “search_string”:   terms,   // terms generating this result list
+     *      “count”:           a,       // number of results
+     *      “offset”:          b,       // how far into results list following results started
+     *      result                      // array of search results
+     *      [
+     *          { venue 1 },
+     *          { venue 2 },
+     *          { venue 3 }
+     *      ]
+     *  }
+     */
+	public void performServerSearch(final GeoPoint searchLocation, int resultCount, int resultStart, final String searchTerms, final Callback <SearchResults> cb) {
+		// fire off an Asynchronous thread to "perform" network activities...
+	    @SuppressWarnings("unused")
+		AsyncTask<Void, Void, String> result = new AsyncTask<Void, Void, String>() {
+            @Override
+            protected String doInBackground(Void... v) {
+                // fake out the network traffic by inserting a random delay before generating response data
+            	randomDelay(5000,100);
+            	
+            	synchronized(sortedVenueList){
+            		// TODO - perform a basic search
+            		
+	            	// do some "searching"
+	            	Venue venue[] = new Venue[5];
+	            	venue[0] = venue_list[0];
+	            	venue[1] = venue_list[1];
+	            	venue[2] = venue_list[2];
+	            	venue[3] = venue_list[3];
+	            	venue[4] = venue_list[4];
+	        		
+	            	SearchResults result = new SearchResults(
+	            		searchLocation,
+	            		searchTerms,
+	            		venue.length,
+	            		0,
+	            		venue
+	            	);
+	            	
+	        		Log.d("BeerFinderWebService", "Search Results Generated: " + searchTerms);
+	                cb.onSuccess(result);
+            	}
+            	
+				return null;
+            }
+        }.execute();
+	}
+	
+	
+	
 	/**
      *  Client: Venue request JSON
      *  {
@@ -260,7 +339,7 @@ public class BeerFinderWebService {
                 // fake out the network traffic by inserting a random delay before generating response data
             	randomDelay(1000,200);
             	
-            	synchronized(BeerFinderWebService.getInstance()){
+            	synchronized(sortedVenueList){
 	            	// find Venue (data array is not sorted by Venue ID)
 	            	Venue location = null;
 	        		for (Venue site : sortedVenueList) {

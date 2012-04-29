@@ -54,6 +54,7 @@ public class ListResultsActivity extends ListActivity {
 	}
 
 	private List<Venue> getSearchableVenueList() {
+		// TODO - pull results that were passed as an intent data store... TODO
 		List<Venue> searchableVenus = BeerFinderWebService.getInstance().getSearchableVenueList();
 		return searchableVenus;
 	}

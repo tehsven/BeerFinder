@@ -70,30 +70,29 @@ public class VenueActivity extends Activity implements Callback <Beer>{
 
 	@Override
 	public void onSuccess(final Beer beer) {
-		runOnUiThread(new Runnable() {
-		     public void run() {
-		    	// Update display with the most recently returned beer
-		 		View beerView = inflater.inflate(R.layout.venue_beer_list_item, null);
-		 		beerView.setTag(beer);
-
-		 		((TextView) beerView.findViewById(R.id.venue_beer_list_item_name)).setText(beer.getName());
-		 		((TextView) beerView.findViewById(R.id.venue_beer_list_item_brewery)).setText(beer.getBreweryName());
-
-		 		beerView.setOnClickListener(new OnClickListener() {
-		 			@Override
-		 			public void onClick(View view) {
-		 				Intent beerIntent = new Intent(getApplicationContext(), BeerActivity.class);
-		 				beerIntent.putExtra(Beer.SELECTED_BEER, (Beer) view.getTag());
-		 				startActivity(beerIntent);
-		 			}
-		 		});
-
-		 		beerViewGroup.addView(beerView);
-		    }
-		});
-		
-		
-			
+		if(beer != null){
+			runOnUiThread(new Runnable() {
+			     public void run() {
+			    	// Update display with the most recently returned beer
+			 		View beerView = inflater.inflate(R.layout.venue_beer_list_item, null);
+			 		beerView.setTag(beer);
+	
+			 		((TextView) beerView.findViewById(R.id.venue_beer_list_item_name)).setText(beer.getName());
+			 		((TextView) beerView.findViewById(R.id.venue_beer_list_item_brewery)).setText(beer.getBreweryName());
+	
+			 		beerView.setOnClickListener(new OnClickListener() {
+			 			@Override
+			 			public void onClick(View view) {
+			 				Intent beerIntent = new Intent(getApplicationContext(), BeerActivity.class);
+			 				beerIntent.putExtra(Beer.SELECTED_BEER, (Beer) view.getTag());
+			 				startActivity(beerIntent);
+			 			}
+			 		});
+	
+			 		beerViewGroup.addView(beerView);
+			    }
+			});
+		}	
 	}
 
 	@Override
