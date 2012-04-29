@@ -43,5 +43,8 @@
     <string name="beer_color">Color</string>
     <string name="beer_description">Description</string>
     <string name="search_hint">Search Venues</string>
+    <string name="change_location_label">Custom Location</string>
+    <string name="update_zip">Update Zipcode</string>
+
 
 </resources>

@@ -29,12 +29,13 @@
             <Button
                 android:id="@+id/use_current_zip_button"
                 style="@style/MainButton"
-                android:text="@string/use_current_zip_label" />
-
+                android:text="@string/update_zip" />
+<!--  
             <Button
                 android:id="@+id/search_by_zip_go_button"
                 style="@style/MainButton"
                 android:text="@string/search_by_zip_go_label" />
+-->
         </LinearLayout>
     </ScrollView>
 
