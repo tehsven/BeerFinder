@@ -33,13 +33,25 @@
 			    android:textSize="24dp" />
             <Button
                 android:id="@+id/search_by_brand_button"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
                 style="@style/MainButton"
                 android:text="@string/search_by_brand_label" />
 
             <Button
                 android:id="@+id/search_by_zip_button"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
                 style="@style/MainButton"
                 android:text="@string/explore_location_area" />
+            
+            <Button
+                android:id="@+id/change_location"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                style="@style/MainButton"
+                android:text="@string/change_location_label" />
+            
         </LinearLayout>
     </LinearLayout>
 

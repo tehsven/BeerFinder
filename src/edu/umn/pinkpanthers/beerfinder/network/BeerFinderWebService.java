@@ -221,11 +221,13 @@ public class BeerFinderWebService {
 		return instance;
 	}
 
+	/// TODO - delete
 	public List<Beer> getSearchableBeerList() {
 		List<Beer> sortedBeerListCopy = new ArrayList<Beer>(sortedBeerList);
 		return sortedBeerListCopy;
 	}
 
+	/// TODO - delete
 	public List<Venue> getSearchableVenueList() {
 		List<Venue> sortedVenueListCopy = new ArrayList<Venue>(sortedVenueList);
 		return sortedVenueListCopy;

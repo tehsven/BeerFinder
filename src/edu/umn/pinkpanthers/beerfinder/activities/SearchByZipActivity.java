@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 import edu.umn.pinkpanthers.beerfinder.R;
+import edu.umn.pinkpanthers.beerfinder.data.UserLocation;
 import edu.umn.pinkpanthers.beerfinder.network.Callback;
 import edu.umn.pinkpanthers.beerfinder.network.LocationResolver;
 
@@ -31,17 +32,23 @@ public class SearchByZipActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.search_by_zip_screen);
 		enterZipInput = (EditText) findViewById(R.id.enter_zip_button);
 		findViewById(R.id.use_current_zip_button).setOnClickListener(this);
-		findViewById(R.id.search_by_zip_go_button).setOnClickListener(this);
+		//findViewById(R.id.search_by_zip_go_button).setOnClickListener(this);
+		
+		enterZipInput.setText(UserLocation.getInstance().getZip());
 	}
 
 	public void onClick(View v) {
 		if (v.getId() == R.id.use_current_zip_button) {
-			getCurrentZip();
-		} else if (v.getId() == R.id.search_by_zip_go_button) {
-			startMapResultsActivity(enterZipInput.getText().toString());
-		}
+			//getCurrentZip();
+			UserLocation.getInstance().updateLocation(String.valueOf(enterZipInput.getText()));
+			finish();
+		} 
+		//else if (v.getId() == R.id.search_by_zip_go_button) {
+		//	startMapResultsActivity(enterZipInput.getText().toString());
+		//}
 	}
 
+/*
 	private void getCurrentZip() {
 		// Show a spinner while the zip code is retrieved
 		final ProgressDialog spinner = ProgressDialog.show(this, getString(R.string.working_spinner),
@@ -80,7 +87,7 @@ public class SearchByZipActivity extends Activity implements OnClickListener {
 		});
 
 	}
-
+*/
 	public void homeClicked(View view) {
 		finish();
 	}

@@ -7,7 +7,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.location.Location;
+//import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
 import com.google.android.maps.GeoPoint;
@@ -17,9 +17,10 @@ import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
 import com.google.android.maps.OverlayItem;
 import edu.umn.pinkpanthers.beerfinder.R;
+import edu.umn.pinkpanthers.beerfinder.data.UserLocation;
 import edu.umn.pinkpanthers.beerfinder.data.Venue;
 import edu.umn.pinkpanthers.beerfinder.network.BeerFinderWebService;
-import edu.umn.pinkpanthers.beerfinder.network.LocationResolver;
+//import edu.umn.pinkpanthers.beerfinder.network.LocationResolver;
 
 public class MapResultsActivity extends MapActivity {
 
@@ -33,8 +34,9 @@ public class MapResultsActivity extends MapActivity {
 		mapView.setBuiltInZoomControls(true);
 		mapView.setSatellite(false);
 
-		Location defaultLocation = LocationResolver.getDefaultLocation();
-		GeoPoint defaultPoint = LocationResolver.makeGeoPoint(defaultLocation);
+		//Location defaultLocation = LocationResolver.getDefaultLocation();
+		//GeoPoint defaultPoint = LocationResolver.makeGeoPoint(defaultLocation);
+		GeoPoint defaultPoint = UserLocation.getInstance().getGPS();
 		MapController mc = mapView.getController();
 		mc.setCenter(defaultPoint);
 		mc.setZoom(14);

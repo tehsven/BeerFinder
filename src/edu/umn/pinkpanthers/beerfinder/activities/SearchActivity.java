@@ -5,7 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 import edu.umn.pinkpanthers.beerfinder.R;
+import edu.umn.pinkpanthers.beerfinder.data.UserLocation;
 import edu.umn.pinkpanthers.beerfinder.network.BeerFinderWebService;
 
 /**
@@ -14,24 +18,48 @@ import edu.umn.pinkpanthers.beerfinder.network.BeerFinderWebService;
  */
 public class SearchActivity extends Activity implements OnClickListener {
 
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.search_screen);
 		findViewById(R.id.search_by_brand_button).setOnClickListener(this);
 		findViewById(R.id.search_by_zip_button).setOnClickListener(this);
+		findViewById(R.id.change_location).setOnClickListener(this);
 		BeerFinderWebService.initialize();
+		UserLocation.initialize();
 	}
 
 	public void onClick(View v) {
 		// Perform a search
 		if (v.getId() == R.id.search_by_brand_button) {
-			Intent searchByBrandIntent = new Intent(this, SearchByBeerActivity.class);
-			startActivity(searchByBrandIntent);
+			if(UserLocation.getInstance().isLocationValid() == false){
+				Toast.makeText(this, "Invalid location, please select a custom location to continue.", Toast.LENGTH_SHORT).show();
+			}
+			else {
+				EditText searchEditBox = (EditText) findViewById(R.id.brand_name);
+				Intent searchByBrandIntent = new Intent(this, SearchByBeerActivity.class);
+				searchByBrandIntent.putExtra("searchTerms", String.valueOf(searchEditBox.getText()));
+				startActivity(searchByBrandIntent);
+			}
 		}
-		// view all venues nearby
+		
+		// View all venues nearby
 		else if (v.getId() == R.id.search_by_zip_button) {
+			if(UserLocation.getInstance().isLocationValid() == false){
+				Toast.makeText(this, "Invalid location, please select a custom location to continue.", Toast.LENGTH_SHORT).show();
+			}
+			else {
+				//Intent searchByZipIntent = new Intent(this, SearchByZipActivity.class);
+				//searchByZipIntent.putExtra("searchTerms", "");
+				//startActivity(searchByZipIntent);
+			}
+		}
+		
+		// change location (load ZIP screen)
+		else if (v.getId() == R.id.change_location) {
 			Intent searchByZipIntent = new Intent(this, SearchByZipActivity.class);
+			//searchByZipIntent.putExtra("searchTerms", "");
 			startActivity(searchByZipIntent);
 		}
 	}
