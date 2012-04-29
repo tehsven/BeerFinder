@@ -103,14 +103,14 @@ public class ListResultsActivity extends ListActivity {
     }
 	
 	private void handleIntent(Intent intent) {
-        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+        if (Intent.ACTION_SEARCH.equalsIgnoreCase(intent.getAction())) {
           String query = intent.getStringExtra(SearchManager.QUERY);
           
           List<Venue> searchableVenus = this.getSearchableVenueList();//BeerFinderWebService.getInstance().getSearchableVenueList();
           
           for (int i=0;i<searchableVenus.size();i++)
           {
-        	 if (query.equals(searchableVenus.get(i).getName())){
+        	 if (query.equalsIgnoreCase(searchableVenus.get(i).getName())){
         		 Venue venue = searchableVenus.get(i);
         		 searchableVenus.clear();
         		 searchableVenus.add(venue);
