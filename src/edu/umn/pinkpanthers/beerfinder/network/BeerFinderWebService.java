@@ -3,6 +3,7 @@ package edu.umn.pinkpanthers.beerfinder.network;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 
@@ -267,22 +268,65 @@ public class BeerFinderWebService {
             	randomDelay(5000,100);
             	
             	synchronized(sortedVenueList){
-            		// TODO - perform a basic search
+            		HashSet <Venue> tempList = new HashSet <Venue> ();
             		
-	            	// do some "searching"
-	            	Venue venue[] = new Venue[5];
-	            	venue[0] = venue_list[0];
-	            	venue[1] = venue_list[1];
-	            	venue[2] = venue_list[2];
-	            	venue[3] = venue_list[3];
-	            	venue[4] = venue_list[4];
-	        		
+            		// if no search terms are included, return everything
+            		if(searchTerms == null || searchTerms.equals("")){
+            			tempList.addAll(sortedVenueList);
+            		}
+            		
+            		// if search terms are included, perform filtering
+            		else {
+	            		String term[] = searchTerms.split(" ");	// search terms separated by space
+	            		
+	            		// Is that a O(n^3) search algorithm, yes it is.
+	            		// A 'real' database query would be more efficient. I am not a real database.
+	            		Beer emptyCan;
+	            		for(String phase : term){
+	            			for(Venue store : sortedVenueList){
+	            				
+	            				if(store.getName().equalsIgnoreCase(phase)){
+	            					tempList.add(store);
+	            				}
+	            				
+	            				for(String idx : store.getBeers()){
+	            					emptyCan = beer_list[Integer.parseInt(idx) -1];
+	            					
+	            					// hoppiness - low
+	            					if(phase.equalsIgnoreCase("sweet") && Integer.parseInt(emptyCan.getHopsRank()) < 4){
+	            						tempList.add(store);
+	            					}
+	            					
+	            					// hoppiness - high
+	            					if((phase.equalsIgnoreCase("bitter") || phase.equalsIgnoreCase("hoppy")) && Integer.parseInt(emptyCan.getHopsRank()) > 6){
+	            						tempList.add(store);
+	            					}
+	            					
+	            					// color - dark
+	            					if(phase.equalsIgnoreCase("dark") && Integer.parseInt(emptyCan.getColorRank()) > 6){
+	            						tempList.add(store);
+	            					}
+	            					
+	            					// color - light
+	            					if(phase.equalsIgnoreCase("light") && Integer.parseInt(emptyCan.getColorRank()) < 4){
+	            						tempList.add(store);
+	            					}
+	            					
+	            					// description
+	            					if(emptyCan.getDescription().indexOf(phase) != -1){
+	            						tempList.add(store);
+	            					}
+	            				}// end for beers
+	            			}// end for venues
+	            		}// end for terms
+            		}// end else
+	            			
 	            	SearchResults result = new SearchResults(
 	            		searchLocation,
 	            		searchTerms,
-	            		venue.length,
+	            		tempList.size(),
 	            		0,
-	            		venue
+	            		(Venue[]) tempList.toArray()
 	            	);
 	            	
 	        		Log.d("BeerFinderWebService", "Search Results Generated: " + searchTerms);
