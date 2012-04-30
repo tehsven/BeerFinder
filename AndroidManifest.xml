@@ -45,13 +45,14 @@
         <activity
             android:name=".activities.ListResultsActivity"
             android:label="@string/list_results_label"
-            android:theme="@style/BeerFinderTheme" >
+            android:theme="@style/BeerFinderTheme" 
+            android:launchMode="singleTop">
             <intent-filter>
-                <action         android:name="android.intent.action.SEARCH"/>
+                <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
             <meta-data
                 android:name="android.app.searchable"
-                android:resource="@xml/searchable"      />
+                android:resource="@xml/searchable" />
         </activity>
         <activity
             android:name=".activities.VenueActivity"

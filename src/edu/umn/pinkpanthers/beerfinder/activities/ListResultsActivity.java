@@ -32,19 +32,17 @@ public class ListResultsActivity extends ListActivity {
 	private VenueAdapter venueAdapter;
 	private VenueAdapter search_venueAdapter;
 
-	private Intent launchIntent;
+	//private Intent launchIntent;
 	
 	private List<Venue> fullVenueList;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		launchIntent = getIntent();						// save Intent passed to Activity
-		fullVenueList = launchIntent.getParcelableArrayListExtra(Venue.SELECTED_VENUE);
-		Toast.makeText(this, "fullVenueList " + fullVenueList, Toast.LENGTH_SHORT).show();
 		setContentView(R.layout.list_results_screen);	// define XML file which contains screen display info
+		fullVenueList = getIntent().getParcelableArrayListExtra(Venue.SELECTED_VENUE);
 		initListView();									// add initial venues to list
-		handleIntent(getIntent());
+		handleIntent(getIntent());		
 	}
 
 	@Override
@@ -121,32 +119,21 @@ public class ListResultsActivity extends ListActivity {
     }
 	
 	// TODO
-	private void handleIntent(Intent intent) {
-		//Log.d("HandleIntent", intent.getAction());
-		
+	private void handleIntent(Intent intent) {		
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
           
-            Log.d("handle","pre-search");
             List<Venue> searchableVenues = this.getSearchableVenueList();//BeerFinderWebService.getInstance().getSearchableVenueList();
             List<Venue> venueSearchResults = new ArrayList<Venue>();
           
             for (int i = 0; i < searchableVenues.size(); i++)
             {
-            	Log.d("handle","search " + i);
             	if (searchableVenues.get(i).getName().toLowerCase().contains(query.toLowerCase())){
             		venueSearchResults.add(searchableVenues.get(i));
-            		Toast.makeText(this, "search result found!", Toast.LENGTH_SHORT).show();
-        		 
-        		 //Venue venue = searchableVenues.get(i);
-        		 //searchableVenues.clear();
-        		 //searchableVenus.add(venue);
-        		 //search_venueAdapter = new VenueAdapter(this, R.layout.list_results_item, searchableVenus);
-                 //setListAdapter(search_venueAdapter);
-            	}
+        		}
             }
-            Log.d("handle","post-search");
-            search_venueAdapter = new VenueAdapter(this, R.layout.list_results_item, searchableVenues);
+            //venueAdapter.setList(venueSearchResults);
+            search_venueAdapter = new VenueAdapter(this, R.layout.list_results_item, venueSearchResults);
             setListAdapter(search_venueAdapter);
         }
 	}
