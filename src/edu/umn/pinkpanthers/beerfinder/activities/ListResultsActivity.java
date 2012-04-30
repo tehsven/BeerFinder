@@ -132,7 +132,6 @@ public class ListResultsActivity extends ListActivity {
             		venueSearchResults.add(searchableVenues.get(i));
         		}
             }
-            //venueAdapter.setList(venueSearchResults);
             search_venueAdapter = new VenueAdapter(this, R.layout.list_results_item, venueSearchResults);
             setListAdapter(search_venueAdapter);
         }

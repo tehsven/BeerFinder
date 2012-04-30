@@ -287,7 +287,7 @@ public class BeerFinderWebService {
 	            		for(String phase : term){
 	            			for(Venue store : sortedVenueList){
 	            				
-	            				if(store.getName().indexOf(phase) != -1){
+	            				if(store.getName().toLowerCase().indexOf(phase.toLowerCase()) != -1){
 	            					tempList.add(store);
 	            					Log.d("BeerFinderWebService", "Search result found (name): " + store.getID());
 	            				}
@@ -320,7 +320,7 @@ public class BeerFinderWebService {
 	            					}
 	            					
 	            					// description
-	            					if(emptyCan.getDescription().indexOf(phase) != -1){
+	            					if(emptyCan.getDescription().toLowerCase().indexOf(phase.toLowerCase()) != -1){
 	            						tempList.add(store);
 	            						Log.d("BeerFinderWebService", "Search result found (desc): " + store.getID());
 	            					}
