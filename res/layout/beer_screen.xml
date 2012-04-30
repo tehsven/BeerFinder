@@ -29,6 +29,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/beer_hops"
                     android:layout_marginLeft="16dp"
+                    android:textSize="18dp"
                 />
                 
                 <ImageView 
@@ -54,6 +55,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/beer_body"
                     android:layout_marginLeft="16dp"
+                    android:textSize="18dp"
                 />
                 
                 <ImageView 
@@ -78,6 +80,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/beer_color"
                     android:layout_marginLeft="16dp"
+                    android:textSize="18dp"
                 />
                 
                 <ImageView 
@@ -98,8 +101,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/beer_description"
-                android:layout_gravity="center"
-                android:layout_marginLeft="16dp"
+                android:gravity="center_vertical|center_horizontal"
+                android:textSize="20dp" 
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
             />
             

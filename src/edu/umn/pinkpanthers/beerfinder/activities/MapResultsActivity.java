@@ -6,6 +6,7 @@ import java.util.List;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 //import android.location.Location;
@@ -42,8 +43,6 @@ public class MapResultsActivity extends MapActivity implements Callback <SearchR
 		mapView.setBuiltInZoomControls(true);
 		mapView.setSatellite(false);
 
-		//Location defaultLocation = LocationResolver.getDefaultLocation();
-		//GeoPoint defaultPoint = LocationResolver.makeGeoPoint(defaultLocation);
 		GeoPoint defaultPoint = UserLocation.getInstance().getGPS();
 		MapController mc = mapView.getController();
 		mc.setCenter(defaultPoint);
@@ -126,11 +125,33 @@ public class MapResultsActivity extends MapActivity implements Callback <SearchR
 		// Handle click venue event.
 		@Override
 		protected boolean onTap(int index) {
+			final int finalIndex = index;
+			
 			OverlayItem venueItem = overlays.get(index);
 			if (venueItem != null) {
 				AlertDialog.Builder dialog = new AlertDialog.Builder(_context);
 				dialog.setTitle(venueItem.getTitle());
 				dialog.setMessage(venueItem.getSnippet());
+				
+				// "Details" button to load Venue
+				dialog.setPositiveButton("Details", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {                        
+                        // Launch new Activity
+                        Intent venueIntent = new Intent(getApplicationContext(), VenueActivity.class);
+                		venueIntent.putExtra(Venue.SELECTED_VENUE, venuesDisplayed[finalIndex]);
+                		startActivity(venueIntent);
+                    }
+                });
+				
+				// "Cancel" button to close dialog
+				dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+				
 				dialog.show();
 				return true;
 			} else {

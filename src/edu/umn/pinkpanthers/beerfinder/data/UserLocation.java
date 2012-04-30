@@ -5,6 +5,7 @@ import java.util.Collections;
 import com.google.android.maps.GeoPoint;
 
 import edu.umn.pinkpanthers.beerfinder.network.BeerFinderWebService;
+import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Log;
@@ -17,12 +18,14 @@ public class UserLocation {
 
 	private String zipcode;	
 	private static UserLocation instance;
+	private Context context;
 	
 	/** 
 	 * Private 'Singleton' constructor
 	 */
-	private UserLocation() {
+	private UserLocation(Context appContext) {
 		zipcode = "12345";
+		context = appContext;
 		
 		// TODO - ask device for GPS location. if found, set zip to "55455" (U of M)
 		//      - else, force user to enter a zip code.
@@ -31,9 +34,9 @@ public class UserLocation {
 	/**
 	 * Create the 'Singleton' object.
 	 */
-	public static void initialize() {
+	public static void initialize(Context appContext) {
 		if (instance == null) {
-			instance = new UserLocation();
+			instance = new UserLocation(appContext);
 		}
 	}
 
