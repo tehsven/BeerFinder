@@ -221,13 +221,13 @@ public class BeerFinderWebService {
 		return instance;
 	}
 
-	/// TODO - delete
-	public List<Beer> getSearchableBeerList() {
-		List<Beer> sortedBeerListCopy = new ArrayList<Beer>(sortedBeerList);
-		return sortedBeerListCopy;
-	}
-
-	/// TODO - delete
+//	/// TODO - delete
+//	public List<Beer> getSearchableBeerList() {
+//		List<Beer> sortedBeerListCopy = new ArrayList<Beer>(sortedBeerList);
+//		return sortedBeerListCopy;
+//	}
+//
+//	/// TODO - delete
 	public List<Venue> getSearchableVenueList() {
 		List<Venue> sortedVenueListCopy = new ArrayList<Venue>(sortedVenueList);
 		return sortedVenueListCopy;
@@ -267,7 +267,7 @@ public class BeerFinderWebService {
             @Override
             protected String doInBackground(Void... v) {
                 // fake out the network traffic by inserting a random delay before generating response data
-            	randomDelay(5000,100);
+            	//randomDelay(5000,100);
             	
             	synchronized(sortedVenueList){
             		HashSet <Venue> tempList = new HashSet <Venue> ();
@@ -287,8 +287,9 @@ public class BeerFinderWebService {
 	            		for(String phase : term){
 	            			for(Venue store : sortedVenueList){
 	            				
-	            				if(store.getName().equalsIgnoreCase(phase)){
+	            				if(store.getName().indexOf(phase) != -1){
 	            					tempList.add(store);
+	            					Log.d("BeerFinderWebService", "Search result found (name): " + store.getID());
 	            				}
 	            				
 	            				for(String idx : store.getBeers()){
@@ -297,26 +298,31 @@ public class BeerFinderWebService {
 	            					// hoppiness - low
 	            					if(phase.equalsIgnoreCase("sweet") && Integer.parseInt(emptyCan.getHopsRank()) < 4){
 	            						tempList.add(store);
+	            						Log.d("BeerFinderWebService", "Search result found (hoppy low): " + store.getID());
 	            					}
 	            					
 	            					// hoppiness - high
 	            					if((phase.equalsIgnoreCase("bitter") || phase.equalsIgnoreCase("hoppy")) && Integer.parseInt(emptyCan.getHopsRank()) > 6){
 	            						tempList.add(store);
+	            						Log.d("BeerFinderWebService", "Search result found (hoppy high): " + store.getID());
 	            					}
 	            					
 	            					// color - dark
 	            					if(phase.equalsIgnoreCase("dark") && Integer.parseInt(emptyCan.getColorRank()) > 6){
 	            						tempList.add(store);
+	            						Log.d("BeerFinderWebService", "Search result found (color dark): " + store.getID());
 	            					}
 	            					
 	            					// color - light
 	            					if(phase.equalsIgnoreCase("light") && Integer.parseInt(emptyCan.getColorRank()) < 4){
 	            						tempList.add(store);
+	            						Log.d("BeerFinderWebService", "Search result found (color light): " + store.getID());
 	            					}
 	            					
 	            					// description
 	            					if(emptyCan.getDescription().indexOf(phase) != -1){
 	            						tempList.add(store);
+	            						Log.d("BeerFinderWebService", "Search result found (desc): " + store.getID());
 	            					}
 	            				}// end for beers
 	            			}// end for venues
@@ -328,7 +334,7 @@ public class BeerFinderWebService {
 	            		searchTerms,
 	            		tempList.size(),
 	            		0,
-	            		(Venue[]) tempList.toArray()
+	            		tempList.toArray(new Venue[0])
 	            	);
 	            	
 	        		Log.d("BeerFinderWebService", "Search Results Generated: " + searchTerms);

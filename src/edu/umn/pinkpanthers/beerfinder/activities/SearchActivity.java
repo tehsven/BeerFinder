@@ -38,9 +38,9 @@ public class SearchActivity extends Activity implements OnClickListener {
 			}
 			else {
 				EditText searchEditBox = (EditText) findViewById(R.id.brand_name);
-				Intent searchByBrandIntent = new Intent(this, SearchByBeerActivity.class);
-				searchByBrandIntent.putExtra("searchTerms", String.valueOf(searchEditBox.getText()));
-				startActivity(searchByBrandIntent);
+				Intent mapSearch = new Intent(this, MapResultsActivity.class);
+				mapSearch.putExtra("searchTerms", String.valueOf(searchEditBox.getText()));
+				startActivity(mapSearch);
 			}
 		}
 		
@@ -50,16 +50,16 @@ public class SearchActivity extends Activity implements OnClickListener {
 				Toast.makeText(this, "Invalid location, please select a custom location to continue.", Toast.LENGTH_SHORT).show();
 			}
 			else {
-				//Intent searchByZipIntent = new Intent(this, SearchByZipActivity.class);
-				//searchByZipIntent.putExtra("searchTerms", "");
-				//startActivity(searchByZipIntent);
+				Intent mapExplore = new Intent(this, MapResultsActivity.class);
+				mapExplore.putExtra("searchTerms", "");
+				startActivity(mapExplore);
+				
 			}
 		}
 		
 		// change location (load ZIP screen)
 		else if (v.getId() == R.id.change_location) {
 			Intent searchByZipIntent = new Intent(this, SearchByZipActivity.class);
-			//searchByZipIntent.putExtra("searchTerms", "");
 			startActivity(searchByZipIntent);
 		}
 	}

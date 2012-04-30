@@ -54,8 +54,9 @@ public class SearchByBeerActivity extends ListActivity {
 	}
 
 	private List<Beer> getSearchableBeerList() {
-		List<Beer> searchableBeers = BeerFinderWebService.getInstance().getSearchableBeerList();
-		return searchableBeers;
+		//List<Beer> searchableBeers = BeerFinderWebService.getInstance().getSearchableBeerList();
+		//return searchableBeers;
+		return null;
 	}
 
 	public class BeerAdapter extends ArrayAdapter<Beer> {

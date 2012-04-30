@@ -22,7 +22,7 @@ public class UserLocation {
 	 * Private 'Singleton' constructor
 	 */
 	private UserLocation() {
-		zipcode = "";
+		zipcode = "12345";
 		
 		// TODO - ask device for GPS location. if found, set zip to "55455" (U of M)
 		//      - else, force user to enter a zip code.
