@@ -292,6 +292,11 @@ public class BeerFinderWebService {
 	            					Log.d("BeerFinderWebService", "Search result found (name): " + store.getID());
 	            				}
 	            				
+	            				if(store.getAddress().toLowerCase().indexOf(phase.toLowerCase()) != -1){
+	            					tempList.add(store);
+	            					Log.d("BeerFinderWebService", "Search result found (address): " + store.getID());
+	            				}
+	            				
 	            				for(String idx : store.getBeers()){
 	            					emptyCan = beer_list[Integer.parseInt(idx) -1];
 	            					

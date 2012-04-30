@@ -1,13 +1,8 @@
 package edu.umn.pinkpanthers.beerfinder.data;
 
-import java.util.Collections;
-
 import com.google.android.maps.GeoPoint;
 
-import edu.umn.pinkpanthers.beerfinder.network.BeerFinderWebService;
 import android.content.Context;
-import android.os.Parcel;
-import android.os.Parcelable;
 import android.util.Log;
 
 /**

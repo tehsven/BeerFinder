@@ -2,9 +2,6 @@ package edu.umn.pinkpanthers.beerfinder.data;
 
 import com.google.android.maps.GeoPoint;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 /**
  * "Structure class for searchResults.
  * 

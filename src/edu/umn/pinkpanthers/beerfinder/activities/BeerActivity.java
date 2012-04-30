@@ -4,6 +4,8 @@ import edu.umn.pinkpanthers.beerfinder.R;
 import edu.umn.pinkpanthers.beerfinder.data.Beer;
 import android.app.Activity;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,6 +17,13 @@ public class BeerActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.beer_screen);
 
+		// Underline the word "Description" ... what a pain
+		String text = getResources().getString(R.string.beer_description);
+		SpannableString contentUnderline = new SpannableString(text);  
+		contentUnderline.setSpan(new UnderlineSpan(), 0, contentUnderline.length(), 0); 
+		TextView mPage = (TextView) findViewById(R.id.beer_desciption_label);  
+		mPage.setText(contentUnderline);
+		
 		// Get parameter passed to Activity
 		Beer beer = getIntent().getExtras().getParcelable(Beer.SELECTED_BEER);
 

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 import edu.umn.pinkpanthers.beerfinder.R;
 import edu.umn.pinkpanthers.beerfinder.data.UserLocation;
@@ -27,7 +26,7 @@ public class SearchActivity extends Activity implements OnClickListener {
 		findViewById(R.id.search_by_zip_button).setOnClickListener(this);
 		findViewById(R.id.change_location).setOnClickListener(this);
 		BeerFinderWebService.initialize();
-		UserLocation.initialize();
+		UserLocation.initialize(getApplicationContext());
 	}
 
 	public void onClick(View v) {

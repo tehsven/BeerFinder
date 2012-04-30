@@ -2,18 +2,13 @@ package edu.umn.pinkpanthers.beerfinder.activities;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-//import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.ItemizedOverlay;
@@ -22,7 +17,6 @@ import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
 import com.google.android.maps.OverlayItem;
 import edu.umn.pinkpanthers.beerfinder.R;
-import edu.umn.pinkpanthers.beerfinder.data.Beer;
 import edu.umn.pinkpanthers.beerfinder.data.SearchResults;
 import edu.umn.pinkpanthers.beerfinder.data.UserLocation;
 import edu.umn.pinkpanthers.beerfinder.data.Venue;

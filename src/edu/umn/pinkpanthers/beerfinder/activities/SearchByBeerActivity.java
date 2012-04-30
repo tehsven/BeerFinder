@@ -14,7 +14,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import edu.umn.pinkpanthers.beerfinder.R;
 import edu.umn.pinkpanthers.beerfinder.data.Beer;
-import edu.umn.pinkpanthers.beerfinder.network.BeerFinderWebService;
 
 /**
  * Displays a list of beers to select.

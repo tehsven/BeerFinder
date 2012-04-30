@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -37,6 +39,13 @@ public class VenueActivity extends Activity implements Callback <Beer>{
 		addressView = (TextView) findViewById(R.id.venue_address_label);
 		phoneNumber = (TextView) findViewById(R.id.venue_phone_number_label);
 
+		// Underline the word "Beer" ... what a pain
+		String text = getResources().getString(R.string.beer_label);
+		SpannableString contentUnderline = new SpannableString(text);  
+		contentUnderline.setSpan(new UnderlineSpan(), 0, contentUnderline.length(), 0); 
+		TextView mPage = (TextView) findViewById(R.id.venue_beers_label);  
+		mPage.setText(contentUnderline);
+		
 		updateView();
 	}
 
