@@ -1,5 +1,9 @@
 package edu.umn.pinkpanthers.beerfinder.data;
 
+// Location guidance gained from...
+// http://www.firstdroid.com/2010/04/29/android-development-using-gps-to-get-current-location-2/
+
+
 import com.google.android.maps.GeoPoint;
 
 import android.content.Context;
@@ -8,7 +12,6 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 
 /**
  * Model class for a Beer.
@@ -74,7 +77,7 @@ public class UserLocation implements LocationListener{
 	// only update location if it is a five digit number.
 	// otherwise set location invalid
 	public void customLocation(String zip){
-		customLocation = false;
+		customLocation = true;
 		Log.d("UserLocation", "Updated: " + zip);
 		if(zip == null || zip.length() != 5){
 			zipcode = "";
