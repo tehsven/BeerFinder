@@ -45,6 +45,7 @@
     <string name="search_hint">Search Venues</string>
     <string name="change_location_label">Custom Location</string>
     <string name="update_zip">Update Zipcode</string>
+    <string name="use_device_loation_label">Use Device Location</string>
 
 
 </resources>

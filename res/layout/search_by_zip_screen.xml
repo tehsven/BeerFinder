@@ -30,12 +30,12 @@
                 android:id="@+id/use_current_zip_button"
                 style="@style/MainButton"
                 android:text="@string/update_zip" />
-<!--  
+  
             <Button
-                android:id="@+id/search_by_zip_go_button"
+                android:id="@+id/use_device_location_button"
                 style="@style/MainButton"
-                android:text="@string/search_by_zip_go_label" />
--->
+                android:text="@string/use_device_loation_label" />
+
         </LinearLayout>
     </ScrollView>
 

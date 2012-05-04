@@ -1,7 +1,5 @@
 package edu.umn.pinkpanthers.beerfinder.network;
 
-import java.util.ArrayList;
-import java.util.List;
 import com.google.android.maps.GeoPoint;
 import android.app.Activity;
 import android.content.Context;
@@ -60,7 +58,7 @@ public class LocationResolver {
 		}
 		return DEFAULT_LOCATION;
 	}
-
+/*
 	public static List<Location> generateLocationsNear(Location location, int numLocations) {
 		double latitude = location.getLatitude();
 		double longitude = location.getLongitude();
@@ -73,7 +71,7 @@ public class LocationResolver {
 		}
 		return nearLocations;
 	}
-
+*/
 	public static GeoPoint makeGeoPoint(Location defaultLocation) {
 		return new GeoPoint((int) (defaultLocation.getLatitude() * 1000000),
 				(int) (defaultLocation.getLongitude() * 1000000));

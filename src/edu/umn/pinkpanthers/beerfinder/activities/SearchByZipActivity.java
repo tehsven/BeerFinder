@@ -29,9 +29,14 @@ public class SearchByZipActivity extends Activity implements OnClickListener {
 	// Handle clicking on the button(s)
 	public void onClick(View v) {
 		if (v.getId() == R.id.use_current_zip_button) {
-			UserLocation.getInstance().updateLocation(String.valueOf(enterZipInput.getText()));
+			UserLocation.getInstance().customLocation(String.valueOf(enterZipInput.getText()));
 			finish();
 		} 
+		else if(v.getId() == R.id.use_device_location_button) {
+			UserLocation.getInstance().useDevice();	// tell location object to listen to device
+			enterZipInput.setText("");				// remove old custom location data
+			finish();								// return to main activity
+		}
 	}
 
 	// Back button
