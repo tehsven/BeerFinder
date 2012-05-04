@@ -25,7 +25,7 @@ public class BeerFinderWebService {
 			"Summit", 			// brewery
 			"3", 				// hops
 			"8", 				// body
-			"10",	 			// color
+			"9",	 			// color
 			"While its cascading rich black color will be familiar to Stout enthusiasts, ours is decidedly different. It's made with naked oats from the UK, for one. Smooth and slightly sweet, with hints of coffee, caramel and chocolate. Sold only on draught in select places."  // description
 		),
 		new Beer(
@@ -114,8 +114,8 @@ public class BeerFinderWebService {
 			"Guinness",	// name
 			"Diageo", // brewery
 			"4", // hops
-			"8", // body
-			"10", // color
+			"7", // body
+			"9", // color
 			"Swirling clouds tumble as the storm begins to calm, settle, breathe in the moment, then break through the smooth, light head to the bittersweet reward. Unmistakeably GUINNESS® beer, stout, or draught , from the first velvet sip to the last, lingering drop. And every deep-dark satisfying mouthful in between. Pure beauty."  // description
 		),
 		new Beer(
