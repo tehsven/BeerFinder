@@ -118,8 +118,8 @@ public class UserLocation implements LocationListener{
 	public void onLocationChanged(Location location) {
 		// TODO Auto-generated method stub
 		deviceLocation = new GeoPoint(
-			(int)location.getLatitude() * 1000000,
-			(int)location.getLongitude() * 1000000
+			(int)(location.getLatitude()  * 1000000),
+			(int)(location.getLongitude() * 1000000)
 		);
 	}
 
